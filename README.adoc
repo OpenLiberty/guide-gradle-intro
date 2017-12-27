@@ -10,6 +10,7 @@
 :page-layout: guide
 :page-duration: 15 minutes
 :page-description: Learn how to build and test a simple web application using Gradle and Open Liberty
+:page-releasedate: 2017-12-27
 :page-tags: ['Gradle', 'Getting Started']
 :page-permalink: /guides/{projectid}
 :common-includes: https://raw.githubusercontent.com/OpenLiberty/guides-common/master

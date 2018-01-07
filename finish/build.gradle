@@ -101,7 +101,7 @@ task openBrowser {
 task openTestReport {
     description = 'Open browser to the test report'
     doLast {
-        java.awt.Desktop.desktop.browse "file://$buildDir/reports/it/index.html".toURI()
+        java.awt.Desktop.desktop.browse file("$buildDir/reports/it/index.html").toURI()
     }
 }
 // end::open[]

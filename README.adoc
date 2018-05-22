@@ -9,7 +9,7 @@
 :projectid: gradle-intro
 :page-layout: guide
 :page-duration: 15 minutes
-:page-description: Learn how to build and test a simple web application using Gradle and Open Liberty
+:page-description: Learn how to build and test a web application using a build configuration script, the Gradle War plug-in and Open Liberty Gradle plug-in.
 :page-releasedate: 2017-12-27
 :page-tags: ['Gradle', 'Getting Started']
 :page-permalink: /guides/{projectid}

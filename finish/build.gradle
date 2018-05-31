@@ -20,7 +20,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'net.wasdev.wlp.gradle.plugins:liberty-gradle-plugin:2.1'
+        classpath 'net.wasdev.wlp.gradle.plugins:liberty-gradle-plugin:2.3'
     }
 }
 // end::buildscript[]

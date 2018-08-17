@@ -25,7 +25,7 @@ notifications:
     - 'Author: %{author}'
     - 'Summary: %{result} in %{duration}'
     rooms:
-      - #travis encrypt "TOKEN" --add notifications.slack.rooms
+      secure: SvrbxhV7KJhtpKo1MzOTlki6bzxwEtZILvmYP/C4tpEFwVmzrb5N75NARZAAgqKkUAV9KNrZUt0lN++A6S8FgCj28HU99QxW9fEBae1auWbgPHXOsbhqldXcvCuUVyh1lleEQxRuLBK9j/F4hudfytUfcO2lWZYTHr33pgiOKesCZxheiCwBOA7An8XmXVP6ORyj2zaswzwfy5ed9Eh/ENw6ZXDhWHfX0RVVxO2XiB25BjoywrrrjcKUc8wYDzm+6eIHp9ZIZsPEQ1fhACGF1cwCRTcWLc97AgHNT/wAYdDP/TEiZi5MuEVZ1kC8eDmGRcvjCdyJNlAtO32DsNctekahDsH0Uytx7jLRObK9hBqrUHH+cPNjbv19UXsH3hcaj5xjvRQp0kl8jUHfhTpwWBQ6ijtWNvEuJE+9f/oU++dG7aKAALaYu7whroGvydEPVxiaxWpiMh29zXR9QRHm0ss9i7bkhDWJlq2EMTfDtpO9SLSZb7M9UAhWx85coBIvA8HlVqijLyHq0f9yO5dHs10bT9QOuFmK3d8+utclyfIdOlG5HdGg3DZ2c373wIY/S2S2f/c7azMtThbRZ4CZflm85XUH2s8bP72qEEAI2/ZUpblNTFELVW3I1r1uT08lyBYLZyXAnRu/1d5ZAKVjD2+ybO2/jytNQC5Uu2/KePg=
     on_success: never
     on_failure: always
 branches:

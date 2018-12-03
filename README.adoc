@@ -11,11 +11,17 @@
 :page-duration: 15 minutes
 :page-description: Learn how to build and test a web application using a build configuration script, the Gradle War plug-in and Open Liberty Gradle plug-in.
 :page-releasedate: 2017-12-27
+:page-guide-category: basic
+:page-essential: true
+:page-essential-order: 2
 :page-tags: ['Gradle', 'Getting Started']
 :page-permalink: /guides/{projectid}
 :common-includes: https://raw.githubusercontent.com/OpenLiberty/guides-common/master
 :source-highlighter: prettify
 = Building a web application with Gradle
+
+[.hidden]
+NOTE: This repository contains the guide documentation source. To view the guide in published form, view it on the https://openliberty.io/guides/{projectid}.html[Open Liberty website].
 
 Learn how to build and test a simple web application using Gradle and Open Liberty.
 

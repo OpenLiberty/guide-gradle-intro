@@ -7,7 +7,7 @@
 //     IBM Corporation
 //
 :projectid: gradle-intro
-:page-layout: guide
+:page-layout: guide-multipane
 :page-duration: 15 minutes
 :page-description: Learn how to build and test a web application using a build configuration script, the Gradle War plug-in and Open Liberty Gradle plug-in.
 :page-releasedate: 2017-12-27
@@ -27,30 +27,38 @@ Learn how to build and test a simple web application using Gradle and Open Liber
 
 == What you'll learn
 
-You will learn how to build and test a simple web servlet application using the Gradle `war` plug-in and the Liberty Gradle plug-in.
-The `war` plug-in compiles and builds the application code.
-The https://github.com/WASdev/ci.gradle/blob/master/README.md[`liberty` Gradle plug-in] installs the Open Liberty runtime, creates a server, and installs the application to run and test.
-The application displays a simple web page with a link. When you click that link, the application calls the servlet to return a simple response of `Hello! Is Gradle working for you?`.
+You will learn how to build and test a simple web servlet application using the Gradle `war` 
+plug-in and the Liberty Gradle plug-in. The `war` plug-in compiles and builds the application 
+code. The https://github.com/WASdev/ci.gradle/blob/master/README.md[`liberty` Gradle plug-in] 
+installs the Open Liberty runtime, creates a server, and installs the application to run and test.
+The application displays a simple web page with a link. When you click that link, the application 
+calls the servlet to return a simple response of `Hello! Is Gradle working for you?`.
 
-One benefit of using a build tool like Gradle is that after you define the details of the project and any dependencies it has, Gradle automatically downloads and installs the dependencies.
+One benefit of using a build tool like Gradle is that after you define the details of the 
+project and any dependencies it has, Gradle automatically downloads and installs the dependencies.
 
 Another benefit of using Gradle is that it can run repeatable, automated tests on the application.
-You could, of course, test your application manually by starting a server and pointing a web browser at the application URL.
-Automated tests are a much better approach because you can easily rerun the same tests each time the application is built.
-If the tests don't pass after you've made a change to the application, the build fails, and you know that you introduced a regression that requires a fix to your code.
+You could, of course, test your application manually by starting a server and pointing a web 
+browser at the application URL. Automated tests are a much better approach because you can 
+easily rerun the same tests each time the application is built. If the tests don't pass after 
+you've made a change to the application, the build fails, and you know that you introduced 
+a regression that requires a fix to your code.
 
-Using this guide, you will create a Gradle build definition file (`build.gradle`) for the web application project, and use it to build the application.
-You will then create a simple, automated test, and configure Gradle to run it after building the application.
+Using this guide, you will create a Gradle build definition file (`build.gradle`) for the 
+web application project, and use it to build the application. You will then create a simple, 
+automated test, and configure Gradle to run it after building the application.
 
 include::{common-includes}/gitclone.adoc[]
 
 == Creating the application
 
-The web application that you will build using Gradle and Open Liberty is provided for you in the `start` directory so that you can focus on learning about Gradle.
-The application uses the standard Gradle directory structure.
-Using this directory structure saves you from customizing the `build.gradle` file later.
+The web application that you will build using Gradle and Open Liberty is provided for you 
+in the `start` directory so that you can focus on learning about Gradle. The application uses 
+the standard Gradle directory structure. Using this directory structure saves you from 
+customizing the `build.gradle` file later.
 
-All the application source code, including the Open Liberty server configuration (`server.xml`), is in the `start/src` directory:
+All the application source code, including the Open Liberty server configuration (`server.xml`), 
+is in the `start/src` directory:
 
 [source, role="no_copy"]
 ----
@@ -66,12 +74,13 @@ All the application source code, including the Open Liberty server configuration
 
 == Installing Gradle
 
-If you don't have Gradle Version 3 or higher installed, follow the instructions on the https://gradle.org/install/[Gradle installation page] for your operating system.
+If you don't have Gradle Version 3 or higher installed, follow the instructions on the 
+https://gradle.org/install/[Gradle installation page] for your operating system.
 Configure the environment variables so that you can run the `gradle` command.
 
 Test that Gradle is installed properly by running the following command in a command line:
 
-[source, role="no_copy"]
+[source, role="command"]
 ----
 gradle -v
 ----
@@ -95,7 +104,7 @@ OS:           Mac OS X 10.12.6 x86_64
 
 You can also view the default tasks available by running the following command:
 
-[source, role="no_copy"]
+[source, role="command"]
 ----
 gradle tasks
 ----
@@ -105,20 +114,29 @@ gradle tasks
 The project configuration is defined in the Gradle settings and build files.
 You will create these project configurations one section at a time.
 
-Gradle https://docs.gradle.org/current/dsl/org.gradle.api.initialization.Settings.html[settings] are used to instantiate and configure the project.
-This sample uses the `settings.gradle` to name the project `GradleSample`.
+Gradle https://docs.gradle.org/current/dsl/org.gradle.api.initialization.Settings.html[settings] 
+are used to instantiate and configure the project. This sample uses the `settings.gradle` 
+to name the project `GradleSample`.
 
-Create `./settings.gradle`:
+[role="code_command hotspot=1", subs="quotes"] 
+---- 
+Create the Gradle settings file.
+`finish/settings.gradle`
+---- 
+
+settings.gradle
 [source]
 ----
 include::finish/settings.gradle[]
 ----
 
-This `settings.gradle` file isn't required for a single-module Gradle project. Without this definition, by default, the project name is set the name of the folder in which it is contained (`start` for this example).
+This [hotspot=1]`settings.gradle` file isn't required for a single-module Gradle project. 
+Without this definition, by default, the project name is set the name of the folder in 
+which it is contained (`start` for this example).
 
-Create a `build.gradle` file in the `start` folder with the `settings.gradle` file and the `src` folder.
-
-Let's go through the parts of the `build.gradle` file so that you understand each part.
+An empty `build.gradle` file has been created for you in the `start` directory. In this
+guide you will build the this file piece by piece. Let's go through the `build.gradle` 
+file so that you understand each part.
 
 [cols="40, 100"]
 |===
@@ -133,44 +151,48 @@ Let's go through the parts of the `build.gradle` file so that you understand eac
 | test | Unit test and integration test configuration.
 |===
 
-You will build the `build.gradle` file piece by piece.
 
----
-Add this first section to your build file:
+[role="code_command hotspot=1-12", subs="quotes"] 
+---- 
+Add the first section of the build file.
+`finish/build.gradle`
+---- 
+
 [source,groovy]
 ----
-include::finish/build.gradle[tag=opening]
+include::finish/build.gradle[tag=**]
 ----
+
 This code snippet defines the https://docs.gradle.org/current/userguide/war_plugin.html[`war`] and https://github.com/WASdev/ci.gradle/blob/master/README.md[`liberty`] plug-ins that you want to use.
 The `war` plug-in contains all the tasks to compile Java files, build the WAR file structure, and assemble the archive.
 The `liberty` plug-in contains the tasks used to install the Liberty runtime and create and manage servers.
 The `group`, `version`, and `description` define this sample project.
 The compatibility and encoding settings are for Java.
 
----
-Add the `buildscript` section to your build file:
-[source,groovy]
-----
-include::finish/build.gradle[tag=buildscript]
-----
+[role="code_command hotspot=1-12", subs="quotes"] 
+---- 
+Add the `buildscript` section to the build file.
+`finish/build.gradle`
+---- 
+
 The `buildscript` section defines plug-in versions to use in the build and where to find them.
 This guide uses version 2.1 of the `liberty` plug-in, which is available from the Maven Central Repository.
 
----
-Add the `repositories` section to your build file:
-[source,groovy]
-----
-include::finish/build.gradle[tag=repositories]
-----
+[role="code_command hotspot=1-12", subs="quotes"] 
+---- 
+Add the `repositories` section to the build file.
+`finish/build.gradle`
+---- 
+
 The `repositories` section defines where to find the dependencies that you are using in the build.
 For this build, everything you need is in Maven Central.
 
----
-Add the `dependencies` section to your build file:
-[source,groovy]
-----
-include::finish/build.gradle[tag=dependencies]
-----
+[role="code_command hotspot=1-12", subs="quotes"] 
+---- 
+Add the `dependencies` section to the build file.
+`finish/build.gradle[tag=**]`
+---- 
+
 The `dependencies` section defines what is needed to compile and test the code.
 This section also defines how to run the application.
 The `providedCompile` dependencies are APIs that are needed to compile the application, but they do not need to be packaged with the application because Open Liberty provides their implementation at run time.
@@ -180,23 +202,21 @@ The `testCompile` dependencies are needed to compile and run tests.
 The `liberty` plug-in provides the `libertyRuntime` dependency definition that specifies the version of the Liberty runtime you want to use.
 This project uses Open Liberty 17.0.0.4 or later.
 
----
-Add the `ext` section to your build file:
-[source,groovy]
-----
-include::finish/build.gradle[tag=ext]
-----
+[role="code_command hotspot=1-12", subs="quotes"] 
+---- 
+Add the `ext` section to the build file.
+`finish/build.gradle`
+---- 
 
 The Gradle extra properties extension allows you to add properties to a Gradle project.
 If you use a value more than once in your build file, you can simplify updates by defining it as a variable here and referring to the variable later in the build file.
 This project defines variables for the application name, ports, and the context-root.
 
----
-Add the `liberty` section to your build file:
-[source,xml,indent=0]
-----
-include::finish/build.gradle[tag=liberty]
-----
+[role="code_command hotspot=1-12", subs="quotes"] 
+---- 
+Add the `liberty` section to the build file.
+`finish/build.gradle`
+---- 
 
 The `liberty` extension configures the Liberty server, which includes the following settings:
 [cols="40, 100"]
@@ -228,12 +248,11 @@ If you want to turn off loose application support, add the following line:
 looseApplication = false
 ----
 
----
-Add the `war` section to your build file:
-[source,xml,indent=0]
-----
-include::finish/build.gradle[tag=war]
-----
+[role="code_command hotspot=1-12", subs="quotes"] 
+---- 
+Add the `war` section to the build file.
+`finish/build.gradle`
+---- 
 
 This configuration names the WAR file GradleSample.war without a version in the name.
 
@@ -246,7 +265,11 @@ In this example, you will create a simple integration test that checks that the 
 
 The Gradle project is configured to start the server with the application installed before running the test. After running the test, the server is stopped.
 
-Create the test class `src/test/java/io/openliberty/guides/hello/it/EndpointIT.java`:
+[role="code_command hotspot=1-12", subs="quotes"] 
+---- 
+Create the `EndpointIT` test class.
+`src/test/java/io/openliberty/guides/hello/it/EndpointIT.java[tag=**]`
+---- 
 
 [source,java,indent=0]
 ----
@@ -256,11 +279,17 @@ include::finish/src/test/java/io/openliberty/guides/hello/it/EndpointIT.java[tag
 The test class name ends in `it` to indicate that it contains an integration test.
 The integration tests are put in the `it` folder by convention.
 
-Add the `test` section to your build file:
-[source,xml,indent=0]
+[role="code_command hotspot=1-12", subs="quotes"] 
+---- 
+Add the `test` section to your build file.
+`finish/build.gradle[tag=**]`
+---- 
+
+[source,groovy]
 ----
-include::finish/build.gradle[tags=tests]
+include::finish/build.gradle[tag=**]
 ----
+
 This configures Gradle to run the integration tests in the `\*/it/**` folder.
 
 The `systemProperties` configuration defines some variables needed by the test class.
@@ -269,22 +298,12 @@ The `systemProperties` section passes these details to the Java test program as 
 
 The following lines in the `EndpointIT.java` test class uses these system variables to build the URL of the application:
 
-[source,java,indent=0]
-----
-include::finish/src/test/java/io/openliberty/guides/hello/it/EndpointIT.java[tags=URL]
-----
-
 In the test class, after defining how to build the application URL, the `@Test` annotation indicates the start of the test method.
 
 In the `try` block of the test method, an HTTP `GET` request to the URL of the application returns a status code.
 If the response to the request includes the string `Hello! Is Gradle working for you?`, the test passes.
 If that string is not in the response, the test fails.
 The HTTP client then disconnects from the application.
-
-[source,java,indent=0]
-----
-include::finish/src/test/java/io/openliberty/guides/hello/it/EndpointIT.java[tags=clicklink]
-----
 
 In the `import` statements of this test class, you'll notice that the test has some new dependencies.
 Earlier you added some `testCompile` dependencies.
@@ -316,22 +335,25 @@ The directory structure of the project in the `start` folder should now look lik
 We show a few more Gradle tricks in this example with the `openBrowser` and the `openTestReport` tasks.
 These tasks display your application and the test report in the default browser.
 
----
-Add these browser tasks to your build file:
-[source,xml,indent=0]
+[role="code_command hotspot=1-12", subs="quotes"] 
+---- 
+Add the browser tasks to your build file.
+`finish/build.gradle[tag=**]`
+---- 
+
+[source,groovy]
 ----
-include::finish/build.gradle[tag=open]
+include::finish/build.gradle[tag=**]
 ----
 
 The final Gradle magic to add is the task dependency directives.
 These statements associate the `war` and `java` tasks to the `liberty` tasks to get proper task ordering.
 
----
-Add these statements to your build file:
-[source,xml,indent=0]
-----
-include::finish/build.gradle[tag=depends]
-----
+[role="code_command hotspot=1-12", subs="quotes"] 
+---- 
+Add these statements to your build file.
+`finish/build.gradle[tag=**]`
+---- 
 
 
 == Ready to run

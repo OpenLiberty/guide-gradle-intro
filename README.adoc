@@ -125,7 +125,7 @@ Create the Gradle settings file.
 ---- 
 
 settings.gradle
-[source]
+[source, groovy, linenums, role='code_column']
 ----
 include::finish/settings.gradle[]
 ----
@@ -158,7 +158,8 @@ Add the first section of the build file.
 `finish/build.gradle`
 ---- 
 
-[source,groovy]
+build.gradle
+[source, groovy, linenums, role=`code_column`]
 ----
 include::finish/build.gradle[tag=**]
 ----
@@ -271,7 +272,8 @@ Create the `EndpointIT` test class.
 `src/test/java/io/openliberty/guides/hello/it/EndpointIT.java[tag=**]`
 ---- 
 
-[source,java,indent=0]
+EndpointIT.java 
+[source, java, linenums, role='code_column']
 ----
 include::finish/src/test/java/io/openliberty/guides/hello/it/EndpointIT.java[tags=**;!comment]
 ----
@@ -285,7 +287,8 @@ Add the `test` section to your build file.
 `finish/build.gradle[tag=**]`
 ---- 
 
-[source,groovy]
+build.gradle   
+[source, groovy, linenums, role='code_column']
 ----
 include::finish/build.gradle[tag=**]
 ----
@@ -341,7 +344,8 @@ Add the browser tasks to your build file.
 `finish/build.gradle[tag=**]`
 ---- 
 
-[source,groovy]
+build.gradle 
+[source, groovy, linenums, role='code_column']
 ----
 include::finish/build.gradle[tag=**]
 ----
@@ -361,21 +365,17 @@ Add these statements to your build file.
 You can now run the build command to build and test the application.
 
 From the folder containing your `build.gradle` file, run the command:
+
+[role='command']
 ----
 gradle build -i
 ----
+
 The `-i` option provides additional information on the command line.
 The build takes a little longer than before the test existed, but expect to see the browser opened with the test summary displayed.
 
 To see whether the test detects a failure, change the response string in the servlet `src/main/java/io/openliberty/guides/hello/HelloServlet.java` so that it doesn't match the string that the test is looking for.
 Then rerun the Gradle integration tests with a `gradle integrationTest -i` command, and check that the test fails.
-
-The complete `build.gradle` file should now look like the following:
-
-[source,xml,indent=0]
-----
-include::finish/build.gradle[tags=whole]
-----
 
 == Great work! You're done!
 

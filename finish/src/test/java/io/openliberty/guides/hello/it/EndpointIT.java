@@ -41,7 +41,8 @@ public class EndpointIT {
             int expectedStatusCode = HttpStatus.SC_OK;
             assertEquals("HTTP GET failed", expectedStatusCode, actualStatusCode);
             String response = httpGetMethod.getResponseBodyAsString(1000);
-            assertTrue("Unexpected response body", response.contains("Hello! Is Gradle working for you?"));
+            assertTrue("Unexpected response body", 
+                response.contains("Hello! Is Gradle working for you?"));
         } finally {
             httpGetMethod.releaseConnection();
         }

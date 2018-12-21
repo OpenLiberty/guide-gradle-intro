@@ -247,10 +247,10 @@ If you want to turn off loose application support, add the following line:
 looseApplication = false
 ----
 
-[role="code_command hotspot=56-58", file=1, subs="quotes"] 
+[role="code_command hotspot=56-58 file=1", subs="quotes"] 
 ---- 
 Add the `war` section to the build file.
-`finish/build.gradle`
+`/build.gradle`
 ---- 
 
 This configuration names the WAR file GradleSample.war without a version in the name.

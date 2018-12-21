@@ -155,7 +155,7 @@ file so that you understand each part.
 [role="code_command hotspot=1-12", subs="quotes"] 
 ---- 
 Add the first section of the build file.
-`finish/build.gradle`
+`/build.gradle`
 ---- 
 
 build.gradle
@@ -170,40 +170,39 @@ The `liberty` plug-in contains the tasks used to install the Liberty runtime and
 The `group`, `version`, and `description` define this sample project.
 The compatibility and encoding settings are for Java.
 
-[role="code_command hotspot=1-12", subs="quotes"] 
+[role="code_command hotspot=14-21", file=1, subs="quotes"] 
 ---- 
 Add the `buildscript` section to the build file.
-`finish/build.gradle`
+`/build.gradle`
 ---- 
 
-The `buildscript` section defines plug-in versions to use in the build and where to find them.
-This guide uses version 2.1 of the `liberty` plug-in, which is available from the Maven Central Repository.
+The [hotspot=14-21 file=1]`buildscript` section defines plug-in versions to use in the build and 
+where to find them. This guide uses the [hotspot=19 file=1]`liberty` plug-in, which is available 
+from the Maven Central Repository.
 
-[role="code_command hotspot=1-12", subs="quotes"] 
+[role="code_command hotspot=1-12", file=1, subs="quotes"] 
 ---- 
 Add the `repositories` section to the build file.
 `finish/build.gradle`
 ---- 
 
-The `repositories` section defines where to find the dependencies that you are using in the build.
+The [hotspot=23-25 file=1]`repositories` section defines where to find the dependencies that you are using in the build.
 For this build, everything you need is in Maven Central.
 
-[role="code_command hotspot=1-12", subs="quotes"] 
+[role="code_command hotspot=27-33", file=1, subs="quotes"] 
 ---- 
 Add the `dependencies` section to the build file.
-`finish/build.gradle[tag=**]`
+`/build.gradle[tag=**]`
 ---- 
 
-The `dependencies` section defines what is needed to compile and test the code.
-This section also defines how to run the application.
-The `providedCompile` dependencies are APIs that are needed to compile the application, but they do not need to be packaged with the application because Open Liberty provides their implementation at run time.
-For example, the `HelloServlet.java` class depends on `javax.servlet-api` to compile, but since Open Liberty provides that API, it does not need to be packaged with your application.
-The `testCompile` dependencies are needed to compile and run tests.
+The [hotspot=27-33 file=1]`dependencies` section defines what is needed to compile and 
+test the code. This section also defines how to run the application. The [hotspot=28 file=1]`providedCompile` dependencies are APIs that are needed to compile the application, but they do not need to be packaged with the application because Open Liberty provides their implementation at run time.
+For example, the `HelloServlet.java` class depends on [hotspot=28 file=1]`javax.servlet-api` to compile, but since Open Liberty provides that API, it does not need to be packaged with your application. The [hotspot=29-30 file=1]`testCompile` dependencies are needed to compile and run tests.
 
-The `liberty` plug-in provides the `libertyRuntime` dependency definition that specifies the version of the Liberty runtime you want to use.
+The [hotspot=42-54 file=1]`liberty` plug-in provides the [hotspot=31-32 file=1]`libertyRuntime` dependency definition that specifies the version of the Liberty runtime you want to use.
 This project uses Open Liberty 17.0.0.4 or later.
 
-[role="code_command hotspot=1-12", subs="quotes"] 
+[role="code_command hotspot=35-40, file=1, subs="quotes"] 
 ---- 
 Add the `ext` section to the build file.
 `finish/build.gradle`
@@ -213,7 +212,7 @@ The Gradle extra properties extension allows you to add properties to a Gradle p
 If you use a value more than once in your build file, you can simplify updates by defining it as a variable here and referring to the variable later in the build file.
 This project defines variables for the application name, ports, and the context-root.
 
-[role="code_command hotspot=1-12", subs="quotes"] 
+[role="code_command hotspot=42-54", subs="quotes"] 
 ---- 
 Add the `liberty` section to the build file.
 `finish/build.gradle`
@@ -223,15 +222,14 @@ The `liberty` extension configures the Liberty server, which includes the follow
 [cols="40, 100"]
 |===
 | *Server attribute* | *Purpose*
-| name | The server name.
-| configFile | The server configuration file.
-| bootstrapProperties | Bootstrap properties that are written to the server's `bootstrap.properties` file.
-| packageLiberty | Specifies to only package the `usr` directory in the `build/GradleSample.zip` file.
+| [hotspot=44 file=1]`name` | The server name.
+| [hotspot=45 file=1]`configFile` | The server configuration file.
+| [hotspot=46-48 file=1]`bootstrapProperties` | Bootstrap properties that are written to the server's `bootstrap.properties` file.
+| [hotspot=49-52 file=1]`packageLiberty` | Specifies to only package the `usr` directory in the `build/GradleSample.zip` file.
 |===
 
-So what's not configured for the `liberty` plug-in?
-By default, when the `liberty` and the `war` plug-ins are applied, the default WAR file is installed to the `apps` folder.
-Omitting this definition is the same as including the following line:
+So what's not configured for the [hotspot=42-54 file=1]`liberty` plug-in?
+By default, when the [hotspot42-54 file=1]`liberty` and the [hotspot=56-58 file=1]`war` plug-ins are applied, the default WAR file is installed to the `apps` folder. Omitting this definition is the same as including the following line:
 
 [source,groovy]
 ----
@@ -249,7 +247,7 @@ If you want to turn off loose application support, add the following line:
 looseApplication = false
 ----
 
-[role="code_command hotspot=1-12", subs="quotes"] 
+[role="code_command hotspot=56-58", file=1, subs="quotes"] 
 ---- 
 Add the `war` section to the build file.
 `finish/build.gradle`
@@ -260,28 +258,28 @@ This configuration names the WAR file GradleSample.war without a version in the 
 == Testing the web application
 
 One of the benefits of building an application with a build system like Gradle is that it can be configured to run a set of automated tests.
-The `war` plug-in extends the https://docs.gradle.org/current/userguide/java_plugin.html[Java plug-in], which provides test tasks.
+The [hotspot=56-58 file=1]`war` plug-in extends the https://docs.gradle.org/current/userguide/java_plugin.html[Java plug-in], which provides test tasks.
 You can write tests for the individual units of code outside of a running application server (unit tests), or you can write them to call the application that runs on the server (integration tests).
 In this example, you will create a simple integration test that checks that the web page opens and that the correct response is returned when the link is clicked.
 
 The Gradle project is configured to start the server with the application installed before running the test. After running the test, the server is stopped.
 
-[role="code_command hotspot=1-12", subs="quotes"] 
+[role="code_command hotspot=10-34", subs="quotes"] 
 ---- 
 Create the `EndpointIT` test class.
-`src/test/java/io/openliberty/guides/hello/it/EndpointIT.java[tag=**]`
+`src/test/java/io/openliberty/guides/hello/it/EndpointIT.java`
 ---- 
 
 EndpointIT.java 
 [source, java, linenums, role='code_column']
 ----
-include::finish/src/test/java/io/openliberty/guides/hello/it/EndpointIT.java[tags=**;!comment]
+include::finish/src/test/java/io/openliberty/guides/hello/it/EndpointIT.java[tags=**;!copyright]
 ----
 
 The test class name ends in `it` to indicate that it contains an integration test.
 The integration tests are put in the `it` folder by convention.
 
-[role="code_command hotspot=1-12", subs="quotes"] 
+[role="code_command hotspot=60-75", subs="quotes"] 
 ---- 
 Add the `test` section to your build file.
 `finish/build.gradle[tag=**]`
@@ -295,24 +293,24 @@ include::finish/build.gradle[tag=**]
 
 This configures Gradle to run the integration tests in the `\*/it/**` folder.
 
-The `systemProperties` configuration defines some variables needed by the test class.
-While the port number and context-root information can be hardcoded in the test class, it is better to specify it in a single place like the Gradle `build.gradle` file, in case they need to change.
-The `systemProperties` section passes these details to the Java test program as a series of system properties, resolving the `liberty.text.port` and `war.name` variables.
+The [hotspot=74 file=1]`systemProperties` configuration defines some variables needed by the test class.
+While the port number and context-root information can be hardcoded in the test class, it is better to specify it in a single place like the Gradle [hotspot=1-97 file=1]`build.gradle` file, in case they need to change.
+The [hotspot=74 file=1]`systemProperties` section passes these details to the Java test program as a series of system properties, resolving the [hotspot=74 file=1]`liberty.text.port` and [hotspot=74 file=1]`war.name` variables.
 
-The following lines in the `EndpointIT.java` test class uses these system variables to build the URL of the application:
+The following lines in the [hotspot=15-17 file=0]`EndpointIT.java` test class uses these system variables to build the URL of the application:
 
-In the test class, after defining how to build the application URL, the `@Test` annotation indicates the start of the test method.
+In the test class, after defining how to build the application URL, the [hotspot=20 file=0]`@Test` annotation indicates the start of the test method.
 
-In the `try` block of the test method, an HTTP `GET` request to the URL of the application returns a status code.
+In the [hotspot=24-32 file=0]`try` block of the test method, an HTTP `GET` request to the URL of the application returns a status code.
 If the response to the request includes the string `Hello! Is Gradle working for you?`, the test passes.
 If that string is not in the response, the test fails.
 The HTTP client then disconnects from the application.
 
-In the `import` statements of this test class, you'll notice that the test has some new dependencies.
-Earlier you added some `testCompile` dependencies.
-The Apache `commons-httpclient` and `junit` dependencies are needed to compile and run the integration test `EndpointIT` class.
+In the [hotspot=3-8 file=0]`import` statements of this test class, you'll notice that the test has some new dependencies.
+Earlier you added some [hotspot=29-30 file=1]`testCompile` dependencies.
+The Apache `commons-httpclient` and `junit` dependencies are needed to compile and run the integration test [hotspot=10-34 file=0]`EndpointIT` class.
 
-The scope for each of the dependencies is set to `testCompile` because the libraries are needed only during the Gradle test phase and do not need to be packaged with the application.
+The scope for each of the dependencies is set to [hotspot=29-30 file=1]`testCompile` because the libraries are needed only during the Gradle test phase and do not need to be packaged with the application.
 
 Now, during the build, Gradle installs the application and then runs any integration test classes in the `it` folder.
 
@@ -335,13 +333,13 @@ The directory structure of the project in the `start` folder should now look lik
 ----
 
 == A few more pieces
-We show a few more Gradle tricks in this example with the `openBrowser` and the `openTestReport` tasks.
+We show a few more Gradle tricks in this example with the [hotspot=77-83]`openBrowser` and the [hotspot=85-90]`openTestReport` tasks.
 These tasks display your application and the test report in the default browser.
 
-[role="code_command hotspot=1-12", subs="quotes"] 
+[role="code_command hotspot=77-90", subs="quotes"] 
 ---- 
 Add the browser tasks to your build file.
-`finish/build.gradle[tag=**]`
+`/build.gradle`
 ---- 
 
 build.gradle 
@@ -353,10 +351,10 @@ include::finish/build.gradle[tag=**]
 The final Gradle magic to add is the task dependency directives.
 These statements associate the `war` and `java` tasks to the `liberty` tasks to get proper task ordering.
 
-[role="code_command hotspot=1-12", subs="quotes"] 
+[role="code_command hotspot=92-87", subs="quotes"] 
 ---- 
 Add these statements to your build file.
-`finish/build.gradle[tag=**]`
+`/build.gradle`
 ---- 
 
 
@@ -375,7 +373,14 @@ The `-i` option provides additional information on the command line.
 The build takes a little longer than before the test existed, but expect to see the browser opened with the test summary displayed.
 
 To see whether the test detects a failure, change the response string in the servlet `src/main/java/io/openliberty/guides/hello/HelloServlet.java` so that it doesn't match the string that the test is looking for.
-Then rerun the Gradle integration tests with a `gradle integrationTest -i` command, and check that the test fails.
+Then rerun the Gradle integration tests by running the command:
+
+[role='command']
+----
+gradle integrationTest -i
+----
+
+Then, check to see if the test fails.
 
 == Great work! You're done!
 

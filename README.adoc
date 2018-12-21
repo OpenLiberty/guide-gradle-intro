@@ -125,12 +125,12 @@ Create the Gradle settings file.
 ---- 
 
 settings.gradle
-[source, groovy, linenums, role='code_column']
+[source, gradle, linenums, role='code_column']
 ----
 include::finish/settings.gradle[]
 ----
 
-This [hotspot=1]`settings.gradle` file isn't required for a single-module Gradle project. 
+This `settings.gradle` file isn't required for a single-module Gradle project. 
 Without this definition, by default, the project name is set the name of the folder in 
 which it is contained (`start` for this example).
 
@@ -159,7 +159,7 @@ Add the first section of the build file.
 ---- 
 
 build.gradle
-[source, groovy, linenums, role='code_column']
+[source, gradle, linenums, role='code_column']
 ----
 include::finish/build.gradle[tag=**]
 ----

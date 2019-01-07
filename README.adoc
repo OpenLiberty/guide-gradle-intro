@@ -245,7 +245,7 @@ The `liberty` extension configures the Liberty server, which includes the follow
 |===
 
 So what's not configured for the [hotspot=42-54 file=1]`liberty` plug-in?
-By default, when the [hotspot42-54 file=1]`liberty` and the [hotspot=56-58 file=1]`war` 
+By default, when the [hotspot=42-54 file=1]`liberty` and the [hotspot=56-58 file=1]`war` 
 plug-ins are applied, the default WAR file is installed to the `apps` folder. Omitting 
 this definition is the same as including the following line:
 
@@ -341,8 +341,9 @@ response, the test fails. The HTTP client then disconnects from the application.
 
 In the [hotspot=3-8 file=0]`import` statements of this test class, you'll notice that the 
 test has some new dependencies. Earlier you added some [hotspot=29-30 file=1]`testCompile` 
-dependencies. The Apache `commons-httpclient` and `junit` dependencies are needed to compile 
-and run the integration test [hotspot=10-35 file=0]`EndpointIT` class.
+dependencies. The Apache [hotspot=29 file=1]`commons-httpclient` and [hotspot=30 file=1]`junit` 
+dependencies are needed to compile and run the integration test [hotspot=10-35 file=0]`EndpointIT` 
+class.
 
 The scope for each of the dependencies is set to [hotspot=29-30 file=1]`testCompile` 
 because the libraries are needed only during the Gradle test phase and do not need to be 
@@ -427,7 +428,7 @@ integration tests by running the command:
 HelloServlet.java   
 [source, Java, linenums, role='code_column']
 ----
-include::finish/src/main/java/io/openliberty/guides/hello/HelloServlet.java[tag=**]
+include::finish/src/main/java/io/openliberty/guides/hello/HelloServlet.java[tag=**;!comment]
 ----
 
 [role='command']

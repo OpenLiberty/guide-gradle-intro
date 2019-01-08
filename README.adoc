@@ -214,7 +214,7 @@ provides that API, it does not need to be packaged with your application. The
 HelloServlet.java   
 [source, Java, linenums, role='code_column']
 ----
-include::finish/src/main/java/io/openliberty/guides/hello/HelloServlet.java[tag=**;!comment]
+include::finish/src/main/java/io/openliberty/guides/hello/HelloServlet.java[tags=**;!comment]
 ----
 
 The [hotspot=42-54 file=1]`liberty` plug-in provides the [hotspot=31-32 file=1]`libertyRuntime` 
@@ -434,7 +434,7 @@ integration tests by running the command:
 HelloServlet.java   
 [source, Java, linenums, role='code_column']
 ----
-include::finish/src/main/java/io/openliberty/guides/hello/HelloServlet.java[tag=**;!comment]
+include::finish/src/main/java/io/openliberty/guides/hello/HelloServlet.java[tags=**;!comment]
 ----
 
 [role='command']

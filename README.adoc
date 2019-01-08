@@ -122,7 +122,7 @@ to name the project `GradleSample`.
 
 [role="code_command hotspot=1", subs="quotes"] 
 ---- 
-Create the Gradle settings file.
+#Create the Gradle settings file.#
 `settings.gradle`
 ---- 
 
@@ -159,7 +159,7 @@ file so that you understand each part.
 
 [role="code_command hotspot=1-12", subs="quotes"] 
 ---- 
-Add the first section of the build file.
+#Add the first section of the build file.#
 `build.gradle`
 ---- 
 
@@ -178,7 +178,7 @@ define this sample project. The compatibility and encoding settings are for Java
 
 [role="code_command hotspot=14-21 file=1", subs="quotes"] 
 ---- 
-Add the `buildscript` section to the build file.
+#Add the `buildscript` section to the build file.#
 `build.gradle`
 ---- 
 
@@ -188,7 +188,7 @@ which is available from the Maven Central Repository.
 
 [role="code_command hotspot=23-25 file=1", subs="quotes"] 
 ---- 
-Add the `repositories` section to the build file.
+#Add the `repositories` section to the build file.#
 `build.gradle`
 ---- 
 
@@ -197,7 +197,7 @@ that you are using in the build. For this build, everything you need is in Maven
 
 [role="code_command hotspot=27-33 file=1", subs="quotes"] 
 ---- 
-Add the `dependencies` section to the build file.
+#Add the `dependencies` section to the build file.#
 `build.gradle`
 ---- 
 
@@ -223,7 +223,7 @@ This project uses Open Liberty 17.0.0.4 or later.
 
 [role="code_command hotspot=35-40 file=1", subs="quotes"] 
 ---- 
-Add the `ext` section to the build file.
+#Add the `ext` section to the build file.#
 `build.gradle`
 ---- 
 
@@ -234,7 +234,7 @@ This project defines variables for the application name, ports, and the context-
 
 [role="code_command hotspot=42-54 file=1", subs="quotes"] 
 ---- 
-Add the `liberty` section to the build file.
+#Add the `liberty` section to the build file.#
 `build.gradle`
 ---- 
 
@@ -277,7 +277,7 @@ looseApplication = false
 
 [role="code_command hotspot=56-58 file=1", subs="quotes"] 
 ---- 
-Add the `war` section to the build file.
+#Add the `war` section to the build file.#
 `build.gradle`
 ---- 
 
@@ -299,7 +299,7 @@ running the test. After running the test, the server is stopped.
 
 [role="code_command hotspot=10-35", subs="quotes"] 
 ---- 
-Create the `EndpointIT` test class.
+#Create the `EndpointIT` test class.#
 `src/test/java/io/openliberty/guides/hello/it/EndpointIT.java`
 ---- 
 
@@ -314,7 +314,7 @@ The integration tests are put in the `it` folder by convention.
 
 [role="code_command hotspot=60-75 file=1", subs="quotes"] 
 ---- 
-Add the `test` section to your build file.
+#Add the `test` section to your build file.#
 `build.gradle`
 ---- 
 
@@ -384,7 +384,7 @@ test report in the default browser.
 
 [role="code_command hotspot=77-90", subs="quotes"] 
 ---- 
-Add the browser tasks to your build file.
+#Add the browser tasks to your build file.#
 `build.gradle`
 ---- 
 
@@ -400,7 +400,7 @@ task ordering.
 
 [role="code_command hotspot=92-87", subs="quotes"] 
 ---- 
-Add these statements to your build file.
+#Add these statements to your build file.#
 `build.gradle`
 ---- 
 

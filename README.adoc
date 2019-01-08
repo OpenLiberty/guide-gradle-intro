@@ -206,7 +206,7 @@ test the code. This section also defines how to run the application. The
 [hotspot=28 file=1]`providedCompile` dependencies are APIs that are needed to compile the 
 application, but they do not need to be packaged with the application because Open Liberty 
 provides their implementation at run time. For example, the
-[hotspot=1-29 file=2]`src/main/java/io/openliberty/guides/hello/HelloServlet.java` file 
+[hotspot=1-30 file=2]`src/main/java/io/openliberty/guides/hello/HelloServlet.java` file 
 depends on [hotspot=28 file=1]`javax.servlet-api` to compile, but since Open Liberty 
 provides that API, it does not need to be packaged with your application. The 
 [hotspot=29-30 file=1]`testCompile` dependencies are needed to compile and run tests.
@@ -426,9 +426,9 @@ The `-i` option provides additional information on the command line. The build t
 little longer than before the test existed, but expect to see the browser opened with the 
 test summary displayed.
 
-To see whether the test detects a failure, change the response string in the servlet 
-[hotspot=1-29 file=1]`src/main/java/io/openliberty/guides/hello/HelloServlet.java` so 
-that it doesn't match the string that the test is looking for. Then rerun the Gradle 
+To see whether the test detects a failure, change the response string in the 
+[hotspot=1-30 file=1]`src/main/java/io/openliberty/guides/hello/HelloServlet.java` file 
+so that it doesn't match the string that the test is looking for. Then rerun the Gradle 
 integration tests by running the command:
 
 HelloServlet.java   

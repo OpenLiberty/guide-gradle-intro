@@ -451,6 +451,5 @@ You built and tested a web application project with an Open Liberty server using
 You can quickly create this project structure by using the https://liberty-app-accelerator.wasdev.developer.ibm.com/start/[Liberty App Accelerator] 
 and choose to create a Gradle project.
 
-include::{common-includes}/finish.adoc[]
 
 include::https://raw.githubusercontent.com/OpenLiberty/guides-common/multipane/attribution.adoc[subs="attributes"]

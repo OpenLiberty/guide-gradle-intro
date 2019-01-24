@@ -159,7 +159,7 @@ file so that you understand each part.
 
 [role="code_command hotspot=1-12", subs="quotes"] 
 ---- 
-#Add the first section of the build file.#
+#Create the build file.#
 `build.gradle`
 ---- 
 
@@ -169,37 +169,19 @@ build.gradle
 include::finish/build.gradle[tag=**]
 ----
 
-This code snippet defines the [hotspot=1 file=1]`war` [hotspot=2 file=1]`liberty` plug-ins 
+The first section of code defines the [hotspot=1 file=1]`war` [hotspot=2 file=1]`liberty` plug-ins 
 that you want to use. The [hotspot=1 file=1]`war` plug-in contains all the tasks to compile 
 Java files, build the WAR file structure, and assemble the archive. The [hotspot=2 file=1]`liberty` 
 plug-in contains the tasks used to install the Liberty runtime and create and manage 
 servers. The [hotspot=4 file=1]`group`, [hotspot=5 file=1]`version`, and [hotspot=6 file=1]`description` 
 define this sample project. The compatibility and encoding settings are for Java.
 
-[role="code_command hotspot=14-21 file=1", subs="quotes"] 
----- 
-#Add the `buildscript` section to the build file.#
-`build.gradle`
----- 
-
 The [hotspot=14-21 file=1]`buildscript` section defines plug-in versions to use in the 
 build and where to find them. This guide uses the [hotspot=19 file=1]`liberty` plug-in, 
 which is available from the Maven Central Repository.
 
-[role="code_command hotspot=23-25 file=1", subs="quotes"] 
----- 
-#Add the `repositories` section to the build file.#
-`build.gradle`
----- 
-
 The [hotspot=23-25 file=1]`repositories` section defines where to find the dependencies 
 that you are using in the build. For this build, everything you need is in Maven Central.
-
-[role="code_command hotspot=27-33 file=1", subs="quotes"] 
----- 
-#Add the `dependencies` section to the build file.#
-`build.gradle`
----- 
 
 The [hotspot=27-33 file=1]`dependencies` section defines what is needed to compile and 
 test the code. This section also defines how to run the application. The 
@@ -221,22 +203,10 @@ The [hotspot=42-54 file=1]`liberty` plug-in provides the [hotspot=31-32 file=1]`
 dependency definition that specifies the version of the Liberty runtime you want to use.
 This project uses Open Liberty 17.0.0.4 or later.
 
-[role="code_command hotspot=35-40 file=1", subs="quotes"] 
----- 
-#Add the `ext` section to the build file.#
-`build.gradle`
----- 
-
 The Gradle extra properties extension allows you to add properties to a Gradle project.
 If you use a value more than once in your build file, you can simplify updates by defining 
 it as a variable here and referring to the variable later in the build file.
 This project defines variables for the application name, ports, and the context-root.
-
-[role="code_command hotspot=42-54 file=1", subs="quotes"] 
----- 
-#Add the `liberty` section to the build file.#
-`build.gradle`
----- 
 
 The `liberty` extension configures the Liberty server, which includes the following settings:
 [cols="40, 100"]
@@ -275,13 +245,7 @@ add the following line:
 looseApplication = false
 ----
 
-[role="code_command hotspot=56-58 file=1", subs="quotes"] 
----- 
-#Add the `war` section to the build file.#
-`build.gradle`
----- 
-
-This configuration names the WAR file `GradleSample.war` without a version in the name.
+The [hotspot=56-58]`war` configuration names the WAR file `GradleSample.war` without a version in the name.
 
 == Testing the web application
 
@@ -312,19 +276,13 @@ include::finish/src/test/java/io/openliberty/guides/hello/it/EndpointIT.java[tag
 The test class name ends in `it` to indicate that it contains an integration test.
 The integration tests are put in the `it` folder by convention.
 
-[role="code_command hotspot=60-75 file=1", subs="quotes"] 
----- 
-#Add the `test` section to your build file.#
-`build.gradle`
----- 
-
 build.gradle   
 [source, groovy, linenums, role='code_column']
 ----
 include::finish/build.gradle[tag=**]
 ----
 
-This configures Gradle to run the integration tests in the `\*/it/**` folder.
+The [hotspot=60-75]`test` section in your build file configures Gradle to run the integration tests in the `\*/it/**` folder.
 
 The [hotspot=74 file=1]`systemProperties` configuration defines some variables needed by 
 the test class. While the port number and context-root information can be hardcoded in 
@@ -382,11 +340,6 @@ We show a few more Gradle tricks in this example with the [hotspot=77-83]`openBr
 the [hotspot=85-90]`openTestReport` tasks. These tasks display your application and the 
 test report in the default browser.
 
-[role="code_command hotspot=77-90", subs="quotes"] 
----- 
-#Add the browser tasks to your build file.#
-`build.gradle`
----- 
 
 build.gradle 
 [source, groovy, linenums, role='code_column']
@@ -395,14 +348,8 @@ include::finish/build.gradle[tag=**]
 ----
 
 The final Gradle magic to add is the task dependency directives.
-These statements associate the `war` and `java` tasks to the `liberty` tasks to get proper 
+The [hotspot=82-97]`dependency directives` associate the `war` and `java` tasks to the `liberty` tasks to get proper 
 task ordering.
-
-[role="code_command hotspot=92-87", subs="quotes"] 
----- 
-#Add these statements to your build file.#
-`build.gradle`
----- 
 
 
 == Ready to run

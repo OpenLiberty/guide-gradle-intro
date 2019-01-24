@@ -348,7 +348,7 @@ include::finish/build.gradle[tag=**]
 ----
 
 The final Gradle magic to add is the task dependency directives.
-The [hotspot=82-97]`dependency directives` associate the `war` and `java` tasks to the `liberty` tasks to get proper 
+The [hotspot=91-97]`dependency directives` associate the `war` and `java` tasks to the `liberty` tasks to get proper 
 task ordering.
 
 

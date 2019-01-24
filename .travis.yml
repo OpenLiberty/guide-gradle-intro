@@ -4,6 +4,7 @@ before_script:
 - wget -O ~/gradle-5.1.1-bin.zip https://services.gradle.org/distributions/gradle-5.1.1-bin.zip
 - mkdir /opt/gradle
 - unzip -d /opt/gradle ~/gradle-5.1.1-bin.zip
+- rm /usr/local/bin/gradle
 - ln -s /opt/gradle/gradle-5.1.1/bin/gradle /usr/local/bin/gradle
 - gradle -version
 - which gradle

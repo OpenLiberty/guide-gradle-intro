@@ -8,8 +8,9 @@ before_script:
 - sudo rm /usr/local/bin/gradle
 - sudo ln -s /opt/gradle/gradle-5.1.1/bin/gradle /usr/local/bin/gradle
 - gradle -version
-- which gradle
 - cd finish
+jdk:
+- openjdk11
 script:
 - gradle build -x openBrowser -x openTestReport -i
 - serverName=$(build/wlp/bin/server list | cut -d '.' -f2| tr -d '\n');

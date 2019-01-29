@@ -1,6 +1,10 @@
 language: java
 before_script:
 - unset _JAVA_OPTIONS
+- curl -s "https://get.sdkman.io" | bash
+- source "$HOME/.sdkman/bin/sdkman-init.sh"
+- sdk install gradle
+- gradle -version
 - cd finish
 script:
 - gradle build -x openBrowser -x openTestReport -i

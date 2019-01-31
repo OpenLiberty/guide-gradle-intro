@@ -292,8 +292,8 @@ The [hotspot=74 file=1]`systemProperties` section passes these details to the Ja
 program as a series of system properties, resolving the [hotspot=74 file=1]`liberty.test.port` 
 and [hotspot=74 file=1]`war.name` variables.
 
-The following lines in the [hotspot=15-17 file=0]`EndpointIT.java` test class uses these 
-system variables to build the URL of the application:
+The [hotspot=15-17 file=0]`init()` method in the EndpointIT.java` test class uses these 
+system variables to build the URL of the application.
 
 In the test class, after defining how to build the application URL, the [hotspot=20 file=0]`@Test` 
 annotation indicates the start of the test method.

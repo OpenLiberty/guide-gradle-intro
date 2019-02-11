@@ -120,7 +120,7 @@ Gradle https://docs.gradle.org/current/dsl/org.gradle.api.initialization.Setting
 are used to instantiate and configure the project. This sample uses the `settings.gradle` 
 to name the project `GradleSample`.
 
-[role="code_command hotspot=1", subs="quotes"] 
+[role="code_command hotspot", subs="quotes"] 
 ---- 
 #Create the Gradle settings file.#
 `settings.gradle`
@@ -157,7 +157,7 @@ file so that you understand each part.
 |===
 
 
-[role="code_command hotspot=1-12", subs="quotes"] 
+[role="code_command hotspot", subs="quotes"] 
 ---- 
 #Create the build file.#
 `build.gradle`
@@ -188,7 +188,7 @@ test the code. This section also defines how to run the application. The
 [hotspot=28 file=1]`providedCompile` dependencies are APIs that are needed to compile the 
 application, but they do not need to be packaged with the application because Open Liberty 
 provides their implementation at run time. For example, the
-[hotspot=1-30 file=2]`src/main/java/io/openliberty/guides/hello/HelloServlet.java` file 
+[hotspot file=2]`src/main/java/io/openliberty/guides/hello/HelloServlet.java` file 
 depends on [hotspot=28 file=1]`javax.servlet-api` to compile, but since Open Liberty 
 provides that API, it does not need to be packaged with your application. The 
 [hotspot=29-30 file=1]`testCompile` dependencies are needed to compile and run tests.
@@ -261,7 +261,7 @@ returned when the link is clicked.
 The Gradle project is configured to start the server with the application installed before 
 running the test. After running the test, the server is stopped.
 
-[role="code_command hotspot=10-35", subs="quotes"] 
+[role="code_command hotspot", subs="quotes"] 
 ---- 
 #Create the `EndpointIT` test class.#
 `src/test/java/io/openliberty/guides/hello/it/EndpointIT.java`
@@ -356,7 +356,7 @@ task ordering.
 
 You can now run the build command to build and test the application.
 
-From the folder containing your [hotspot=1-97 file=0]`build.gradle` file, run the command:
+From the folder containing your [hotspot file=0]`build.gradle` file, run the command:
 
 build.gradle   
 [source, groovy, linenums, role='code_column']
@@ -374,7 +374,7 @@ little longer than before the test existed, but expect to see the browser opened
 test summary displayed.
 
 To see whether the test detects a failure, change the response string in the 
-[hotspot=1-30 file=1]`src/main/java/io/openliberty/guides/hello/HelloServlet.java` file 
+[hotspot file=1]`src/main/java/io/openliberty/guides/hello/HelloServlet.java` file 
 so that it doesn't match the string that the test is looking for. Then rerun the Gradle 
 integration tests by running the command:
 

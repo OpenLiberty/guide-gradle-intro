@@ -30,7 +30,7 @@ Learn how to build and test a simple web application using Gradle and Open Liber
 
 You will learn how to build and test a simple web servlet application using the Gradle `war` 
 plug-in and the Liberty Gradle plug-in. The `war` plug-in compiles and builds the application 
-code. The https://github.com/WASdev/ci.gradle/blob/master/README.md[`liberty` Gradle plug-in] 
+code. The https://github.com/WASdev/ci.gradle/blob/master/README.md[`liberty` Gradle plug-in^] 
 installs the Open Liberty runtime, creates a server, and installs the application to run and test.
 The application displays a simple web page with a link. When you click that link, the application 
 calls the servlet to return a simple response of `Hello! Is Gradle working for you?`.
@@ -77,7 +77,7 @@ is in the `start/src` directory:
 == Installing Gradle
 
 If you don't have Gradle Version 3 or higher installed, follow the instructions on the 
-https://gradle.org/install/[Gradle installation page] for your operating system.
+https://gradle.org/install/[Gradle installation page^] for your operating system.
 Configure the environment variables so that you can run the `gradle` command.
 
 Test that Gradle is installed properly by running the following command in a command line:
@@ -116,7 +116,7 @@ gradle tasks
 The project configuration is defined in the Gradle settings and build files.
 You will create these project configurations one section at a time.
 
-Gradle https://docs.gradle.org/current/dsl/org.gradle.api.initialization.Settings.html[settings] 
+Gradle https://docs.gradle.org/current/dsl/org.gradle.api.initialization.Settings.html[settings^] 
 are used to instantiate and configure the project. This sample uses the `settings.gradle` 
 to name the project `GradleSample`.
 
@@ -232,7 +232,7 @@ apps = [war]
 
 You can also install applications to the `dropins` folder.
 
-Also, by default, a https://www.ibm.com/support/knowledgecenter/en/SSEQTP_liberty/com.ibm.websphere.wlp.doc/ae/rwlp_loose_applications.html[loose application] 
+Also, by default, a https://www.ibm.com/support/knowledgecenter/en/SSEQTP_liberty/com.ibm.websphere.wlp.doc/ae/rwlp_loose_applications.html[loose application^] 
 is installed to your Liberty server. Instead of installing a WAR archive, an XML file 
 (`GradleSample.war.xml`) is installed that describes the location of the application 
 classes, resources, and libraries. This is useful for development because you only need 
@@ -251,7 +251,7 @@ The [hotspot=56-58]`war` configuration names the WAR file `GradleSample.war` wit
 
 One of the benefits of building an application with a build system like Gradle is that 
 it can be configured to run a set of automated tests. The [hotspot=56-58 file=1]`war` 
-plug-in extends the https://docs.gradle.org/current/userguide/java_plugin.html[Java plug-in], 
+plug-in extends the https://docs.gradle.org/current/userguide/java_plugin.html[Java plug-in^], 
 which provides test tasks. You can write tests for the individual units of code outside 
 of a running application server (unit tests), or you can write them to call the application 
 that runs on the server (integration tests). In this example, you will create a simple 
@@ -395,7 +395,7 @@ Then, check to see if the test fails.
 
 You built and tested a web application project with an Open Liberty server using Gradle.
 
-You can quickly create this project structure by using the https://liberty-app-accelerator.wasdev.developer.ibm.com/start/[Liberty App Accelerator] 
+You can quickly create this project structure by using the https://liberty-app-accelerator.wasdev.developer.ibm.com/start/[Liberty App Accelerator^] 
 and choose to create a Gradle project.
 
 

@@ -14,7 +14,7 @@
 :page-guide-category: basic
 :page-essential: true
 :page-essential-order: 2
-:page-tags: ['Gradle', 'Getting Started']
+:page-tags: ['Getting Started']
 :page-permalink: /guides/{projectid}
 :page-related-guides: ['maven-intro']
 :common-includes: https://raw.githubusercontent.com/OpenLiberty/guides-common/master

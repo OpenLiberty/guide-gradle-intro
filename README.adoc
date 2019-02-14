@@ -137,8 +137,7 @@ This `settings.gradle` file isn't required for a single-module Gradle project.
 Without this definition, by default, the project name is set the name of the folder in 
 which it is contained (`start` for this example).
 
-An empty `build.gradle` file has been created for you in the `start` directory. In this
-guide you will build the this file piece by piece. Let's go through the `build.gradle` 
+Let's go through the `build.gradle` 
 file so that you understand each part.
 
 [cols="40, 100"]
@@ -170,7 +169,7 @@ build.gradle
 include::finish/build.gradle[tag=**]
 ----
 
-The first section of code defines the [hotspot=1 file=1]`war` [hotspot=2 file=1]`liberty` plug-ins 
+The first section of code defines the [hotspot=1 file=1]`war` and [hotspot=2 file=1]`liberty` plug-ins 
 that you want to use. The [hotspot=1 file=1]`war` plug-in contains all the tasks to compile 
 Java files, build the WAR file structure, and assemble the archive. The [hotspot=2 file=1]`liberty` 
 plug-in contains the tasks used to install the Liberty runtime and create and manage 
@@ -209,7 +208,7 @@ If you use a value more than once in your build file, you can simplify updates b
 it as a variable here and referring to the variable later in the build file.
 This project defines variables for the application name, ports, and the context-root.
 
-The `liberty` extension configures the Liberty server, which includes the following settings:
+The [hotspot=42-54 file=1]`liberty` extension configures the Liberty server, which includes the following settings:
 [cols="40, 100"]
 |===
 | *Server attribute* | *Purpose*
@@ -246,7 +245,7 @@ add the following line:
 looseApplication = false
 ----
 
-The [hotspot=56-58]`war` configuration names the WAR file `GradleSample.war` without a version in the name.
+The [hotspot=56-58 file=1]`war` configuration names the WAR file `GradleSample.war` without a version in the name.
 
 == Testing the web application
 
@@ -283,17 +282,17 @@ build.gradle
 include::finish/build.gradle[tag=**]
 ----
 
-The [hotspot=60-75]`test` section in your build file configures Gradle to run the integration tests in the `\*/it/**` folder.
+The [hotspot=60-75 file=1]`test` section in your build file configures Gradle to run the integration tests in the `\*/it/**` folder.
 
 The [hotspot=74 file=1]`systemProperties` configuration defines some variables needed by 
 the test class. While the port number and context-root information can be hardcoded in 
 the test class, it is better to specify it in a single place like the Gradle 
-[hotspot=1-97 file=1]`build.gradle` file, in case they need to change.
+[hotspot file=1]`build.gradle` file, in case they need to change.
 The [hotspot=74 file=1]`systemProperties` section passes these details to the Java test 
 program as a series of system properties, resolving the [hotspot=74 file=1]`liberty.test.port` 
 and [hotspot=74 file=1]`war.name` variables.
 
-The [hotspot=15-17 file=0]`init()` method in the EndpointIT.java` test class uses these 
+The [hotspot=14-18 file=0]`init()` method in the `EndpointIT.java` test class uses these 
 system variables to build the URL of the application.
 
 In the test class, after defining how to build the application URL, the [hotspot=20 file=0]`@Test` 
@@ -396,8 +395,6 @@ Then, check to see if the test fails.
 
 You built and tested a web application project with an Open Liberty server using Gradle.
 
-You can quickly create this project structure by using the https://liberty-app-accelerator.wasdev.developer.ibm.com/start/[Liberty App Accelerator^] 
-and choose to create a Gradle project.
 
 
 include::https://raw.githubusercontent.com/OpenLiberty/guides-common/multipane/attribution.adoc[subs="attributes"]

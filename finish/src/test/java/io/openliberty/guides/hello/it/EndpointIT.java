@@ -1,6 +1,6 @@
-// tag::comment[]
+// tag::copyright[]
 /*******************************************************************************
- * Copyright (c) 2017 IBM Corporation and others.
+ * Copyright (c) 2017, 2019 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,7 @@
  * Contributors:
  *     IBM Corporation - initial API and implementation
  *******************************************************************************/
-// end::comment[]
+// end::copyright[]
 package io.openliberty.guides.hello.it;
 
 import static org.junit.Assert.*;
@@ -41,7 +41,8 @@ public class EndpointIT {
             int expectedStatusCode = HttpStatus.SC_OK;
             assertEquals("HTTP GET failed", expectedStatusCode, actualStatusCode);
             String response = httpGetMethod.getResponseBodyAsString(1000);
-            assertTrue("Unexpected response body", response.contains("Hello! Is Gradle working for you?"));
+            assertTrue("Unexpected response body", 
+                response.contains("Hello! Is Gradle working for you?"));
         } finally {
             httpGetMethod.releaseConnection();
         }

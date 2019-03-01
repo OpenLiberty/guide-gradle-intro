@@ -94,7 +94,11 @@ task integrationTest(type: Test) {
 task openBrowser {
     description = 'Open browser to http://localhost:8080/${warContext}'
     doLast {
+<<<<<<< HEAD
         java.awt.Desktop.desktop.browse
+=======
+        java.awt.Desktop.desktop.browse
+>>>>>>> 5498fa52c573b6dd7b1daf148f38051e7808041f
             "http://localhost:${testServerHttpPort}/${appName}".toURI()
     }
 }

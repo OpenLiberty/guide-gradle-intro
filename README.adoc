@@ -14,7 +14,7 @@
 :page-guide-category: basic
 :page-essential: true
 :page-essential-order: 2
-:page-tags: ['Getting Started']
+:page-tags: ['Gradle', 'Getting Started']
 :page-permalink: /guides/{projectid}
 :page-related-guides: ['maven-intro']
 :common-includes: https://raw.githubusercontent.com/OpenLiberty/guides-common/master
@@ -134,7 +134,7 @@ include::finish/settings.gradle[]
 ----
 
 This `settings.gradle` file isn't required for a single-module Gradle project. 
-Without this definition, by default, the project name is set the name of the folder in 
+Without this definition, by default, the project name is set as the name of the folder in 
 which it is contained (`start` for this example).
 
 Let's go through the `build.gradle` 
@@ -183,7 +183,7 @@ which is available from the Maven Central Repository.
 The [hotspot=23-25 file=1]`repositories` section defines where to find the dependencies 
 that you are using in the build. For this build, everything you need is in Maven Central.
 
-The [hotspot=27-33 file=1]`dependencies` section defines what is needed to compile and 
+The [hotspot=27-32 file=1]`dependencies` section defines what is needed to compile and 
 test the code. This section also defines how to run the application. The 
 [hotspot=28 file=1]`providedCompile` dependencies are APIs that are needed to compile the 
 application, but they do not need to be packaged with the application because Open Liberty 
@@ -199,29 +199,29 @@ HelloServlet.java
 include::finish/src/main/java/io/openliberty/guides/hello/HelloServlet.java[tags=**;!comment]
 ----
 
-The [hotspot=42-54 file=1]`liberty` plug-in provides the [hotspot=31-32 file=1]`libertyRuntime` 
+The [hotspot=41-53 file=1]`liberty` plug-in provides the [hotspot=31 file=1]`libertyRuntime` 
 dependency definition that specifies the version of the Liberty runtime you want to use.
 This project uses Open Liberty 17.0.0.4 or later.
 
-The Gradle extra properties extension allows you to add properties to a Gradle project.
+The Gradle [hotspot=34-39 file=1]`extra properties` extension allows you to add properties to a Gradle project.
 If you use a value more than once in your build file, you can simplify updates by defining 
 it as a variable here and referring to the variable later in the build file.
 This project defines variables for the application name, ports, and the context-root.
 
-The [hotspot=42-54 file=1]`liberty` extension configures the Liberty server, which includes the following settings:
+The [hotspot=41-53 file=1]`liberty` extension configures the Liberty server, which includes the following settings:
 [cols="40, 100"]
 |===
 | *Server attribute* | *Purpose*
-| [hotspot=44 file=1]`name` | The server name.
-| [hotspot=45 file=1]`configFile` | The server configuration file.
-| [hotspot=46-48 file=1]`bootstrapProperties` | Bootstrap properties that are written to 
+| [hotspot=43 file=1]`name` | The server name.
+| [hotspot=44 file=1]`configFile` | The server configuration file.
+| [hotspot=45-47 file=1]`bootstrapProperties` | Bootstrap properties that are written to 
                                                  the server's `bootstrap.properties` file.
-| [hotspot=49-52 file=1]`packageLiberty` | Specifies to only package the `usr` directory 
+| [hotspot=48-51 file=1]`packageLiberty` | Specifies to only package the `usr` directory 
                                            in the `build/GradleSample.zip` file.
 |===
 
-So what's not configured for the [hotspot=42-54 file=1]`liberty` plug-in?
-By default, when the [hotspot=42-54 file=1]`liberty` and the [hotspot=56-58 file=1]`war` 
+So what's not configured for the [hotspot=41-53 file=1]`liberty` plug-in?
+By default, when the [hotspot=41-53 file=1]`liberty` and the [hotspot=55-57 file=1]`war` 
 plug-ins are applied, the default WAR file is installed to the `apps` folder. Omitting 
 this definition is the same as including the following line:
 
@@ -245,12 +245,12 @@ add the following line:
 looseApplication = false
 ----
 
-The [hotspot=56-58 file=1]`war` configuration names the WAR file `GradleSample.war` without a version in the name.
+The [hotspot=55-57 file=1]`war` configuration names the WAR file `GradleSample.war` without a version in the name.
 
 == Testing the web application
 
 One of the benefits of building an application with a build system like Gradle is that 
-it can be configured to run a set of automated tests. The [hotspot=56-58 file=1]`war` 
+it can be configured to run a set of automated tests. The [hotspot=55-57 file=1]`war` 
 plug-in extends the https://docs.gradle.org/current/userguide/java_plugin.html[Java plug-in^], 
 which provides test tasks. You can write tests for the individual units of code outside 
 of a running application server (unit tests), or you can write them to call the application 
@@ -282,15 +282,15 @@ build.gradle
 include::finish/build.gradle[tag=**]
 ----
 
-The [hotspot=60-75 file=1]`test` section in your build file configures Gradle to run the integration tests in the `\*/it/**` folder.
+The [hotspot=59-74 file=1]`test` section in your build file configures Gradle to run the integration tests in the `it` folder.
 
-The [hotspot=74 file=1]`systemProperties` configuration defines some variables needed by 
+The [hotspot=73 file=1]`systemProperties` configuration defines some variables needed by 
 the test class. While the port number and context-root information can be hardcoded in 
 the test class, it is better to specify it in a single place like the Gradle 
 [hotspot file=1]`build.gradle` file, in case they need to change.
-The [hotspot=74 file=1]`systemProperties` section passes these details to the Java test 
-program as a series of system properties, resolving the [hotspot=74 file=1]`liberty.test.port` 
-and [hotspot=74 file=1]`war.name` variables.
+The [hotspot=73 file=1]`systemProperties` section passes these details to the Java test 
+program as a series of system properties, resolving the [hotspot=73 file=1]`liberty.test.port` 
+and [hotspot=73 file=1]`war.name` variables.
 
 The [hotspot=14-18 file=0]`init()` method in the `EndpointIT.java` test class uses these 
 system variables to build the URL of the application.
@@ -336,8 +336,8 @@ example:
 ----
 
 == A few more pieces
-We show a few more Gradle tricks in this example with the [hotspot=77-83]`openBrowser` and 
-the [hotspot=85-90]`openTestReport` tasks. These tasks display your application and the 
+We show a few more Gradle tricks in this example with the [hotspot=76-82]`openBrowser` and 
+the [hotspot=84-89]`openTestReport` tasks. These tasks display your application and the 
 test report in the default browser.
 
 
@@ -348,7 +348,7 @@ include::finish/build.gradle[tag=**]
 ----
 
 The final Gradle magic to add is the task dependency directives.
-The [hotspot=92-97]`dependency directives` associate the `war` and `java` tasks to the `liberty` tasks to get proper 
+The [hotspot=91-96]`dependency directives` associate the `war` and `java` tasks to the `liberty` tasks to get proper 
 task ordering.
 
 

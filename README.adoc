@@ -14,7 +14,7 @@
 :page-guide-category: basic
 :page-essential: true
 :page-essential-order: 2
-:page-tags: ['Getting Started']
+:page-tags: ['Getting Started', 'Gradle']
 :page-permalink: /guides/{projectid}
 :page-related-guides: ['maven-intro']
 :common-includes: https://raw.githubusercontent.com/OpenLiberty/guides-common/master
@@ -134,7 +134,7 @@ include::finish/settings.gradle[]
 ----
 
 This `settings.gradle` file isn't required for a single-module Gradle project. 
-Without this definition, by default, the project name is set the name of the folder in 
+Without this definition, by default, the project name is set as the name of the folder in 
 which it is contained (`start` for this example).
 
 Let's go through the `build.gradle` 
@@ -203,7 +203,7 @@ The [hotspot=42-54 file=1]`liberty` plug-in provides the [hotspot=31-32 file=1]`
 dependency definition that specifies the version of the Liberty runtime you want to use.
 This project uses Open Liberty 17.0.0.4 or later.
 
-The Gradle extra properties extension allows you to add properties to a Gradle project.
+The Gradle [hotspot=35-40 file=1]`extra properties` extension allows you to add properties to a Gradle project.
 If you use a value more than once in your build file, you can simplify updates by defining 
 it as a variable here and referring to the variable later in the build file.
 This project defines variables for the application name, ports, and the context-root.
@@ -282,7 +282,7 @@ build.gradle
 include::finish/build.gradle[tag=**]
 ----
 
-The [hotspot=60-75 file=1]`test` section in your build file configures Gradle to run the integration tests in the `\*/it/**` folder.
+The [hotspot=60-75 file=1]`test` section in your build file configures Gradle to run the integration tests in the `it` folder.
 
 The [hotspot=74 file=1]`systemProperties` configuration defines some variables needed by 
 the test class. While the port number and context-root information can be hardcoded in 

@@ -1,20 +1,26 @@
-// tag::whole[]
-// tag::opening[]
+// tag::war[]
 apply plugin: 'war'
+// end::war[]
+// tag::liberty[]
 apply plugin: 'liberty'
-
+//end::liberty[]
+// tag::group[]
 group = 'io.openliberty.guides'
+// end::group[]
+// tag::version[]
 version = '1.0-SNAPSHOT'
+// end::version[]
+// tag::description[]
 description = "Gradle guide"
+// end::description[]
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
-// end::opening[]
 
-// tag::buildscript[]
+// tag::war[]
 buildscript {
     repositories {
         mavenCentral()
@@ -23,7 +29,7 @@ buildscript {
         classpath 'net.wasdev.wlp.gradle.plugins:liberty-gradle-plugin:2.6.3'
     }
 }
-// end::buildscript[]
+// end::war[]
 
 // tag::repositories[]
 repositories {

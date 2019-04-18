@@ -176,22 +176,22 @@ plug-in contains the tasks used to install the Liberty runtime and create and ma
 servers. The [hotspot=group file=1]`group`, [hotspot=version file=1]`version`, and [hotspot=description file=1]`description` 
 define this sample project. The compatibility and encoding settings are for Java.
 
-The [hotspot=14-21 file=1]`buildscript` section defines plug-in versions to use in the 
-build and where to find them. This guide uses the [hotspot=19 file=1]`liberty` plug-in, 
+The [hotspot=buildscript file=1]`buildscript` section defines plug-in versions to use in the 
+build and where to find them. This guide uses the [hotspot=liberty-dependency file=1]`liberty` plug-in, 
 which is available from the Maven Central Repository.
 
-The [hotspot=23-25 file=1]`repositories` section defines where to find the dependencies 
+The [hotspot=repositories file=1]`repositories` section defines where to find the dependencies 
 that you are using in the build. For this build, everything you need is in Maven Central.
 
-The [hotspot=27-32 file=1]`dependencies` section defines what is needed to compile and 
+The [hotspot=dependencies file=1]`dependencies` section defines what is needed to compile and 
 test the code. This section also defines how to run the application. The 
-[hotspot=28 file=1]`providedCompile` dependencies are APIs that are needed to compile the 
+[hotspot=providecompile file=1]`providedCompile` dependencies are APIs that are needed to compile the 
 application, but they do not need to be packaged with the application because Open Liberty 
 provides their implementation at run time. For example, the
 [hotspot file=2]`src/main/java/io/openliberty/guides/hello/HelloServlet.java` file 
-depends on [hotspot=28 file=1]`javax.servlet-api` to compile, but since Open Liberty 
+depends on [hotspot=providecompile file=1]`javax.servlet-api` to compile, but since Open Liberty 
 provides that API, it does not need to be packaged with your application. The 
-[hotspot=29-30 file=1]`testCompile` dependencies are needed to compile and run tests.
+[hotspot=testcompile file=1]`testCompile` dependencies are needed to compile and run tests.
 
 HelloServlet.java   
 [source, Java, linenums, role='code_column']
@@ -199,28 +199,28 @@ HelloServlet.java
 include::finish/src/main/java/io/openliberty/guides/hello/HelloServlet.java[tags=**;!comment]
 ----
 
-The [hotspot=41-53 file=1]`liberty` plug-in provides the [hotspot=31 file=1]`libertyRuntime` 
+The [hotspot=liberty file=1]`liberty` plug-in provides the [hotspot=libertyruntime file=1]`libertyRuntime` 
 dependency definition that specifies the version of the Liberty runtime you want to use.
 This project uses Open Liberty 17.0.0.4 or later.
 
-The Gradle [hotspot=34-39 file=1]`extra properties` extension allows you to add properties to a Gradle project.
+The Gradle [hotspot=ext file=1]`extra properties` extension allows you to add properties to a Gradle project.
 If you use a value more than once in your build file, you can simplify updates by defining 
 it as a variable here and referring to the variable later in the build file.
 This project defines variables for the application name, ports, and the context-root.
 
-The [hotspot=41-53 file=1]`liberty` extension configures the Liberty server, which includes the following settings:
+The [hotspot=liberty file=1]`liberty` extension configures the Liberty server, which includes the following settings:
 [cols="40, 100"]
 |===
 | *Server attribute* | *Purpose*
-| [hotspot=43 file=1]`name` | The server name.
-| [hotspot=44 file=1]`configFile` | The server configuration file.
-| [hotspot=45-47 file=1]`bootstrapProperties` | Bootstrap properties that are written to 
+| [hotspot=name file=1]`name` | The server name.
+| [hotspot=configfile file=1]`configFile` | The server configuration file.
+| [hotspot=bootstrapproperties file=1]`bootstrapProperties` | Bootstrap properties that are written to 
                                                  the server's `bootstrap.properties` file.
-| [hotspot=48-51 file=1]`packageLiberty` | Specifies to only package the `usr` directory 
+| [hotspot=packageliberty file=1]`packageLiberty` | Specifies to only package the `usr` directory 
                                            in the `build/GradleSample.zip` file.
 |===
 
-So what's not configured for the [hotspot=41-53 file=1]`liberty` plug-in?
+So what's not configured for the [hotspot=liberty file=1]`liberty` plug-in?
 By default, when the [hotspot=41-53 file=1]`liberty` and the [hotspot=55-57 file=1]`war` 
 plug-ins are applied, the default WAR file is installed to the `apps` folder. Omitting 
 this definition is the same as including the following line:

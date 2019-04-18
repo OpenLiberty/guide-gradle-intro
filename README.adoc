@@ -164,7 +164,7 @@ file so that you understand each part.
 ---- 
 
 build.gradle
-[source, gradle, linenums, role='code_column']
+[source, text, linenums, role='code_column']
 ----
 include::finish/build.gradle[]
 ----

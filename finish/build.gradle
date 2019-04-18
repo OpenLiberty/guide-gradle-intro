@@ -66,15 +66,23 @@ ext {
 // tag::liberty[]
 liberty {
     server {
+        //tag::name[]
         name = "${appName}Server"
+        //end::name[]
+        //tag::configfile[]
         configFile = file("src/main/liberty/config/server.xml")
+        //end::configfile[]
+        //tag::bootstrapproperties[]
         bootstrapProperties = ['default.http.port': testServerHttpPort,
                                'default.https.port': testServerHttpsPort,
                                'app.context.root': warContext]
+        //end::bootstrapproperties[]
+        //tag::packageliberty[]
         packageLiberty {
             archive = "$buildDir/${appName}.zip"
             include = "usr"
         }
+        //end::packageliberty[]
     }
 }
 // end::liberty[]

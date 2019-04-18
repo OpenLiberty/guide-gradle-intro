@@ -166,7 +166,7 @@ file so that you understand each part.
 build.gradle
 [source, gradle, linenums, role='code_column']
 ----
-include::finish/build.gradle[tag=**]
+include::finish/build.gradle[]
 ----
 
 The first section of code defines the [hotspot=war file=1]`war` and [hotspot=liberty file=1]`liberty` plug-ins 
@@ -208,7 +208,7 @@ If you use a value more than once in your build file, you can simplify updates b
 it as a variable here and referring to the variable later in the build file.
 This project defines variables for the application name, ports, and the context-root.
 
-The [hotspot=liberty file=1]`liberty` extension configures the Liberty server, which includes the following settings:
+The [hotspot=liberty file=1]`liberty` ext ension configures the Liberty server, which includes the following settings:
 [cols="40, 100"]
 |===
 | *Server attribute* | *Purpose*

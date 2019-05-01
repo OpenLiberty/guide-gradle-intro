@@ -63,7 +63,7 @@ ext {
 }
 // end::ext[]
 
-// tag::liberty[]
+// tag::liberty2[]
 liberty {
     server {
         //tag::name[]
@@ -85,13 +85,13 @@ liberty {
         //end::packageliberty[]
     }
 }
-// end::liberty[]
+// end::liberty2[]
 
-// tag::war[]
+// tag::war2[]
 war {
     archiveName = "${baseName}.${extension}"
 }
-// end::war[]
+// end::war2[]
 
 // tag::tests[]
 test {

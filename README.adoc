@@ -193,10 +193,10 @@ depends on [hotspot=providecompile file=1]`javax.servlet-api` to compile, but si
 provides that API, it does not need to be packaged with your application. The 
 [hotspot=testcompile file=1]`testCompile` dependencies are needed to compile and run tests.
 
-HelloServlet.java   
-[source, Java, linenums, role='code_column']
+HelloServlet.java
+[source, Java, linenums, role='code_column hide_tags=comment']
 ----
-include::finish/src/main/java/io/openliberty/guides/hello/HelloServlet.java[tags=**;!comment]
+include::finish/src/main/java/io/openliberty/guides/hello/HelloServlet.java[]
 ----
 
 The [hotspot=liberty file=1]`liberty` plug-in provides the [hotspot=libertyruntime file=1]`libertyRuntime` 
@@ -221,7 +221,7 @@ The [hotspot=liberty file=1]`liberty` ext ension configures the Liberty server, 
 |===
 
 So what's not configured for the [hotspot=liberty file=1]`liberty` plug-in?
-By default, when the [hotspot=41-53 file=1]`liberty` and the [hotspot=55-57 file=1]`war` 
+By default, when the [hotspot=liberty2 file=1]`liberty` and the [hotspot=war2 file=1]`war` 
 plug-ins are applied, the default WAR file is installed to the `apps` folder. Omitting 
 this definition is the same as including the following line:
 
@@ -268,9 +268,9 @@ running the test. After running the test, the server is stopped.
 ---- 
 
 EndpointIT.java 
-[source, java, linenums, role='code_column']
+[source, java, linenums, role='code_column hide_tags=copyright']
 ----
-include::finish/src/test/java/io/openliberty/guides/hello/it/EndpointIT.java[tags=**;!copyright]
+include::finish/src/test/java/io/openliberty/guides/hello/it/EndpointIT.java[]
 ----
 
 The test class name ends in `it` to indicate that it contains an integration test.
@@ -279,7 +279,7 @@ The integration tests are put in the `it` folder by convention.
 build.gradle   
 [source, groovy, linenums, role='code_column']
 ----
-include::finish/build.gradle[tag=**]
+include::finish/build.gradle[]
 ----
 
 The [hotspot=59-74 file=1]`test` section in your build file configures Gradle to run the integration tests in the `it` folder.
@@ -344,7 +344,7 @@ test report in the default browser.
 build.gradle 
 [source, groovy, linenums, role='code_column']
 ----
-include::finish/build.gradle[tag=**]
+include::finish/build.gradle[]
 ----
 
 The final Gradle magic to add is the task dependency directives.
@@ -361,7 +361,7 @@ From the folder containing your [hotspot file=0]`build.gradle` file, run the com
 build.gradle   
 [source, groovy, linenums, role='code_column']
 ----
-include::finish/build.gradle[tag=**]
+include::finish/build.gradle[]
 ----
 
 [role='command']
@@ -378,10 +378,10 @@ To see whether the test detects a failure, change the response string in the
 so that it doesn't match the string that the test is looking for. Then rerun the Gradle 
 integration tests by running the command:
 
-HelloServlet.java   
-[source, Java, linenums, role='code_column']
+HelloServlet.java
+[source, Java, linenums, role='code_column hide_tags=comment']
 ----
-include::finish/src/main/java/io/openliberty/guides/hello/HelloServlet.java[tags=**;!comment]
+include::finish/src/main/java/io/openliberty/guides/hello/HelloServlet.java[]
 ----
 
 [role='command']

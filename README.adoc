@@ -245,12 +245,12 @@ add the following line:
 looseApplication = false
 ----
 
-The [hotspot=55-57 file=1]`war` configuration names the WAR file `GradleSample.war` without a version in the name.
+The [hotspot=war2 file=1]`war` configuration names the WAR file `GradleSample.war` without a version in the name.
 
 == Testing the web application
 
 One of the benefits of building an application with a build system like Gradle is that 
-it can be configured to run a set of automated tests. The [hotspot=55-57 file=1]`war` 
+it can be configured to run a set of automated tests. The [hotspot=war2 file=1]`war` 
 plug-in extends the https://docs.gradle.org/current/userguide/java_plugin.html[Java plug-in^], 
 which provides test tasks. You can write tests for the individual units of code outside 
 of a running application server (unit tests), or you can write them to call the application 
@@ -282,34 +282,34 @@ build.gradle
 include::finish/build.gradle[]
 ----
 
-The [hotspot=59-74 file=1]`test` section in your build file configures Gradle to run the integration tests in the `it` folder.
+The [hotspot=tests file=1]`test` section in your build file configures Gradle to run the integration tests in the `it` folder.
 
-The [hotspot=73 file=1]`systemProperties` configuration defines some variables needed by 
+The [hotspot=sysproperties file=1]`systemProperties` configuration defines some variables needed by 
 the test class. While the port number and context-root information can be hardcoded in 
 the test class, it is better to specify it in a single place like the Gradle 
 [hotspot file=1]`build.gradle` file, in case they need to change.
-The [hotspot=73 file=1]`systemProperties` section passes these details to the Java test 
-program as a series of system properties, resolving the [hotspot=73 file=1]`liberty.test.port` 
-and [hotspot=73 file=1]`war.name` variables.
+The [hotspot=sysproperties file=1]`systemProperties` section passes these details to the Java test 
+program as a series of system properties, resolving the [hotspot=sysproperties file=1]`liberty.test.port` 
+and [hotspot=sysproperties file=1]`war.name` variables.
 
-The [hotspot=14-18 file=0]`init()` method in the `EndpointIT.java` test class uses these 
+The [hotspot=init file=0]`init()` method in the `EndpointIT.java` test class uses these 
 system variables to build the URL of the application.
 
-In the test class, after defining how to build the application URL, the [hotspot=20 file=0]`@Test` 
+In the test class, after defining how to build the application URL, the [hotspot=test file=0]`@Test` 
 annotation indicates the start of the test method.
 
-In the [hotspot=24-33 file=0]`try` block of the test method, an HTTP `GET` request to the 
+In the [hotspot=try file=0]`try` block of the test method, an HTTP `GET` request to the 
 URL of the application returns a status code. If the response to the request includes the 
 string `Hello! Is Gradle working for you?`, the test passes. If that string is not in the 
 response, the test fails. The HTTP client then disconnects from the application.
 
-In the [hotspot=3-8 file=0]`import` statements of this test class, you'll notice that the 
-test has some new dependencies. Earlier you added some [hotspot=29-30 file=1]`testCompile` 
-dependencies. The Apache [hotspot=29 file=1]`commons-httpclient` and [hotspot=30 file=1]`junit` 
-dependencies are needed to compile and run the integration test [hotspot=10-35 file=0]`EndpointIT` 
+In the [hotspot=import file=0]`import` statements of this test class, you'll notice that the 
+test has some new dependencies. Earlier you added some [hotspot=testcompile file=1]`testCompile` 
+dependencies. The Apache [hotspot=commons file=1]`commons-httpclient` and [hotspot=junit file=1]`junit` 
+dependencies are needed to compile and run the integration test [hotspot=endpointit file=0]`EndpointIT` 
 class.
 
-The scope for each of the dependencies is set to [hotspot=29-30 file=1]`testCompile` 
+The scope for each of the dependencies is set to [hotspot=testcompile file=1]`testCompile` 
 because the libraries are needed only during the Gradle test phase and do not need to be 
 packaged with the application.
 

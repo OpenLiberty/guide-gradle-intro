@@ -11,31 +11,33 @@
  *******************************************************************************/
 // end::copyright[]
 package io.openliberty.guides.hello.it;
-
+// tag::import[]
 import static org.junit.Assert.*;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpStatus;
 import org.apache.commons.httpclient.methods.GetMethod;
-
+// end::import[]
+//tag::endpointit[]
 public class EndpointIT {
     private static String URL;
 
     @BeforeClass
+    // tag::init[]
     public static void init() {
-        // tag::URL[]
         String port = System.getProperty("liberty.test.port");
         String war = System.getProperty("war.name");
         URL = "http://localhost:" + port + "/" + war + "/" + "servlet";
-        // end::URL[]
     }
-
+    // end::init[]
+    // tag::test[]
     @Test
+    // end::test[]
     public void testServlet() throws Exception {
         HttpClient httpClient = new HttpClient();
         GetMethod httpGetMethod = new GetMethod(URL);
-        // tag::clicklink[]
+        // tag::try[]
         try {
             int actualStatusCode = httpClient.executeMethod(httpGetMethod);
             int expectedStatusCode = HttpStatus.SC_OK;
@@ -46,6 +48,7 @@ public class EndpointIT {
         } finally {
             httpGetMethod.releaseConnection();
         }
-        // end::clicklink[]
+        // end::try[]
     }
 }
+//end::endpointit[]

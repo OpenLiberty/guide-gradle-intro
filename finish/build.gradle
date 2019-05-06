@@ -117,7 +117,7 @@ task integrationTest(type: Test) {
 }
 // end::tests[]
 
-// tag::open[]
+// tag::openbrowser[]
 task openBrowser {
     description = 'Open browser to http://localhost:8080/${warContext}'
     doLast {
@@ -125,14 +125,16 @@ task openBrowser {
             "http://localhost:${testServerHttpPort}/${appName}".toURI()
     }
 }
+// end::openbrowser[]
 
+// tag::opentestreport[]
 task openTestReport {
     description = 'Open browser to the test report'
     doLast {
         java.awt.Desktop.desktop.browse file("$buildDir/reports/it/index.html").toURI()
     }
 }
-// end::open[]
+// end::opentestreport[]
 
 // tag::depends[]
 clean.dependsOn 'libertyStop'

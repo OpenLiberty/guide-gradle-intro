@@ -336,8 +336,8 @@ example:
 ----
 
 == A few more pieces
-We show a few more Gradle tricks in this example with the [hotspot=76-82]`openBrowser` and 
-the [hotspot=84-89]`openTestReport` tasks. These tasks display your application and the 
+We show a few more Gradle tricks in this example with the [hotspot=openbrowser]`openBrowser` and 
+the [hotspot=opentestreport]`openTestReport` tasks. These tasks display your application and the 
 test report in the default browser.
 
 
@@ -348,7 +348,7 @@ include::finish/build.gradle[]
 ----
 
 The final Gradle magic to add is the task dependency directives.
-The [hotspot=91-96]`dependency directives` associate the `war` and `java` tasks to the `liberty` tasks to get proper 
+The [hotspot=depends]`dependency directives` associate the `war` and `java` tasks to the `liberty` tasks to get proper 
 task ordering.
 
 

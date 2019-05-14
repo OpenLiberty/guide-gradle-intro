@@ -20,7 +20,7 @@
 :common-includes: https://raw.githubusercontent.com/OpenLiberty/guides-common/master
 :source-highlighter: prettify
 :guide-author: Open Liberty
-= Showing a quick change for the new interns on lgdev site
+= Building a web application with Gradle
 
 [.hidden]
 NOTE: This repository contains the guide documentation source. To view the guide in published form, view it on the https://openliberty.io/guides/{projectid}.html[Open Liberty website].
@@ -208,7 +208,7 @@ If you use a value more than once in your build file, you can simplify updates b
 it as a variable here and referring to the variable later in the build file.
 This project defines variables for the application name, ports, and the context-root.
 
-The [hotspot=liberty file=1]`liberty` ext ension configures the Liberty server, which includes the following settings:
+The [hotspot=liberty2 file=1]`liberty` extension configures the Liberty server, which includes the following settings:
 [cols="40, 100"]
 |===
 | *Server attribute* | *Purpose*
@@ -220,7 +220,7 @@ The [hotspot=liberty file=1]`liberty` ext ension configures the Liberty server, 
                                            in the `build/GradleSample.zip` file.
 |===
 
-So what's not configured for the [hotspot=liberty file=1]`liberty` plug-in?
+So what's not configured for the [hotspot=liberty2 file=1]`liberty` plug-in?
 By default, when the [hotspot=liberty2 file=1]`liberty` and the [hotspot=war2 file=1]`war` 
 plug-ins are applied, the default WAR file is installed to the `apps` folder. Omitting 
 this definition is the same as including the following line:

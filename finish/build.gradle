@@ -1,18 +1,24 @@
-// tag::whole[]
-// tag::opening[]
+// tag::war[]
 apply plugin: 'war'
+// end::war[]
+// tag::liberty[]
 apply plugin: 'liberty'
-
+//end::liberty[]
+// tag::group[]
 group = 'io.openliberty.guides'
+// end::group[]
+// tag::version[]
 version = '1.0-SNAPSHOT'
+// end::version[]
+// tag::description[]
 description = "Gradle guide"
+// end::description[]
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
-// end::opening[]
 
 // tag::buildscript[]
 buildscript {
@@ -20,7 +26,9 @@ buildscript {
         mavenCentral()
     }
     dependencies {
+        //tag::liberty-dependency[]
         classpath 'net.wasdev.wlp.gradle.plugins:liberty-gradle-plugin:2.6.3'
+        //end::liberty-dependency[]
     }
 }
 // end::buildscript[]
@@ -33,10 +41,20 @@ repositories {
 
 // tag::dependencies[]
 dependencies {
+    //tag::providecompile[]
     providedCompile group:'javax.servlet', name:'javax.servlet-api', version:'4.0.1'
+    //end::providecompile[]
+    //tag::testcompile[]
+    //tag::commons[]
     testCompile group:'commons-httpclient', name:'commons-httpclient', version:'3.1'
+    //end::commons[]
+    //tag::junit[]
     testCompile group:'junit', name:'junit', version:'4.12'
+    //end::junit[]
+    //end::testcompile[]
+    //tag::libertyruntime[]
     libertyRuntime group:'io.openliberty', name:'openliberty-runtime', version:'[17.0.0.4,)'
+    //end::libertyruntime[]
 }
 // end::dependencies[]
 
@@ -49,27 +67,35 @@ ext {
 }
 // end::ext[]
 
-// tag::liberty[]
+// tag::liberty2[]
 liberty {
     server {
+        //tag::name[]
         name = "${appName}Server"
+        //end::name[]
+        //tag::configfile[]
         configFile = file("src/main/liberty/config/server.xml")
+        //end::configfile[]
+        //tag::bootstrapproperties[]
         bootstrapProperties = ['default.http.port': testServerHttpPort,
                                'default.https.port': testServerHttpsPort,
                                'app.context.root': warContext]
+        //end::bootstrapproperties[]
+        //tag::packageliberty[]
         packageLiberty {
             archive = "$buildDir/${appName}.zip"
             include = "usr"
         }
+        //end::packageliberty[]
     }
 }
-// end::liberty[]
+// end::liberty2[]
 
-// tag::war[]
+// tag::war2[]
 war {
     archiveName = "${baseName}.${extension}"
 }
-// end::war[]
+// end::war2[]
 
 // tag::tests[]
 test {
@@ -85,12 +111,13 @@ task integrationTest(type: Test) {
     reports.junitXml.destination = file("$buildDir/test-results/it")
     include '**/it/**'
     exclude '**/unit/**'
-
+// tag::sysproperties[]
     systemProperties = ['liberty.test.port': testServerHttpPort, 'war.name': warContext]
+// end::sysproperties[]
 }
 // end::tests[]
 
-// tag::open[]
+// tag::openbrowser[]
 task openBrowser {
     description = 'Open browser to http://localhost:8080/${warContext}'
     doLast {
@@ -98,14 +125,16 @@ task openBrowser {
             "http://localhost:${testServerHttpPort}/${appName}".toURI()
     }
 }
+// end::openbrowser[]
 
+// tag::opentestreport[]
 task openTestReport {
     description = 'Open browser to the test report'
     doLast {
         java.awt.Desktop.desktop.browse file("$buildDir/reports/it/index.html").toURI()
     }
 }
-// end::open[]
+// end::opentestreport[]
 
 // tag::depends[]
 clean.dependsOn 'libertyStop'

@@ -157,7 +157,7 @@ file so that you understand each part.
 |===
 
 
-[role="code_command hotspot", subs="quotes"] 
+[role="code_command hotspot file=1", subs="quotes"] 
 ---- 
 #Create the build file.#
 `build.gradle`

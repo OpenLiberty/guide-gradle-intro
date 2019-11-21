@@ -367,10 +367,27 @@ HelloServlet.java
 include::finish/src/main/java/io/openliberty/guides/hello/HelloServlet.java[]
 ----
 
+include::finish/build.gradle[]
+----
+
+include::{common-includes}/os-tabs.adoc[]
+
+[.tab_content.windows_section]
+--
 [role='command']
 ----
-gradle integrationTest -i
+gradlew.bat integrationTest -i
 ----
+--
+
+
+[.tab_content.mac_section.linux_section]
+--
+[role='command']
+----
+./gradlew integrationTest -i
+----
+--
 
 Then, check to see if the test fails.
 

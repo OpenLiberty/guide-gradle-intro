@@ -78,39 +78,6 @@ is in the `start/src` directory:
             └── WEB-INF
 ----
 
-== Installing Gradle
-
-Test that Gradle is installed properly by running the following command in a command line:
-
-[source, role="command"]
-----
-gradle -v
-----
-
-You should see information about the Gradle installation similar to this example:
-
-[source, role="no_copy"]
-----
-------------------------------------------------------------
-Gradle 4.1
-------------------------------------------------------------
-
-Build time:   2017-08-07 14:38:48 UTC
-Revision:     941559e020f6c357ebb08d5c67acdb858a3defc2
-
-Groovy:       2.4.11
-Ant:          Apache Ant(TM) Version 1.9.6 compiled on June 29 2015
-JVM:          1.8.0_144 (Oracle Corporation 25.144-b01)
-OS:           Mac OS X 10.12.6 x86_64
-----
-
-You can also view the default tasks available by running the following command:
-
-[source, role="command"]
-----
-gradle tasks
-----
-
 == Configure your project
 
 The project configuration is defined in the Gradle settings and build files.

@@ -367,9 +367,6 @@ HelloServlet.java
 include::finish/src/main/java/io/openliberty/guides/hello/HelloServlet.java[]
 ----
 
-include::finish/build.gradle[]
-----
-
 include::{common-includes}/os-tabs.adoc[]
 
 [.tab_content.windows_section]

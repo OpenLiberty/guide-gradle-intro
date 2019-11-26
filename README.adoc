@@ -79,11 +79,10 @@ is in the `start/src` directory:
 
 == Testing Gradle
 
-If you do not have Gradle installed, running the Gradle Wrapper will automatically install Gradle. The Gradle 
-Wrapper files are included in the project directory. Learn more about Gradle Wrapper on the 
-https://docs.gradle.org/current/userguide/gradle_wrapper.html[official website^].
+If you do not have Gradle installed, running the Gradle Wrapper will automatically install Gradle. To learn 
+more about Gradle Wrapper, see the https://docs.gradle.org/current/userguide/gradle_wrapper.html[Gradle documentation^].
 
-Test that Gradle is installed properly by running the following command in a command line:
+Test that Gradle is installed properly by running the following command::
 
 include::{common-includes}/os-tabs.adoc[]
 

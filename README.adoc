@@ -82,7 +82,7 @@ is in the `start/src` directory:
 If you do not have Gradle installed, running the Gradle Wrapper will automatically install Gradle. To learn 
 more about Gradle Wrapper, see the https://docs.gradle.org/current/userguide/gradle_wrapper.html[Gradle documentation^].
 
-Test that Gradle is installed properly by running the following command::
+Test that Gradle is installed properly by running the following command:
 
 include::{common-includes}/os-tabs.adoc[]
 

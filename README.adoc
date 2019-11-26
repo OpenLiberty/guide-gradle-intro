@@ -48,10 +48,9 @@ a regression that requires a fix to your code.
 
 Using this guide, you will create a Gradle build definition file (`build.gradle`) for the 
 web application project, and use it to build the application. You will then create a simple, 
-automated test, and configure Gradle to run it after building the application. This application
-utilizes the Gradle Wrapper configuration. The Gradle Wrapper is a script that invokes a declared 
-version of Gradle, downloading it beforehand if necessary. The Wrapper is also the recommended 
-way to execute any Gradle build. 
+automated test, and configure Gradle to run it after building the application. The Gradle Wrapper 
+is a script that invokes a declared version of Gradle, downloading it beforehand if necessary. 
+The Wrapper is also the recommended way to execute any Gradle build. 
 
 [role='command']
 include::{common-includes}/gitclone.adoc[]
@@ -78,12 +77,83 @@ is in the `start/src` directory:
             └── WEB-INF
 ----
 
+== Testing Gradle
+
+If you do not have `gradle` installed, running the gradle wrapper will install gradle. The Gradle 
+Wrapper files are included in the project directory. Learn more about Gradle Wrapper on the 
+https://docs.gradle.org/current/userguide/gradle_wrapper.html[Official website^]."
+
+Test that Gradle is installed properly by running the following command in a command line:
+
+include::{common-includes}/os-tabs.adoc[]
+
+[.tab_content.windows_section]
+--
+[role='command']
+----
+gradlew.bat -v
+----
+--
+
+
+[.tab_content.mac_section.linux_section]
+--
+[role='command']
+----
+./gradlew -v
+----
+--
+
+
+[source, role="command"]
+----
+gradle -v
+----
+
+You should see information about the Gradle installation similar to this example:
+
+[source, role="no_copy"]
+----
+------------------------------------------------------------
+Gradle 5.6.3
+------------------------------------------------------------
+
+Build time:   2019-10-18 00:28:36 UTC
+Revision:     bd168bbf5d152c479186a897f2cea494b7875d13
+
+Kotlin:       1.3.41
+Groovy:       2.5.4
+Ant:          Apache Ant(TM) version 1.9.14 compiled on March 12 2019
+JVM:          1.8.0_144 (Oracle Corporation 25.144-b01)
+OS:           Mac OS X 10.15.1 x86_64
+
+----
+
+You can also view the default tasks available by running the following command:
+
+include::{common-includes}/os-tabs.adoc[]
+
+[.tab_content.windows_section]
+--
+[source, role="command"]
+----
+gradlew.bat tasks
+----
+--
+
+
+[.tab_content.mac_section.linux_section]
+--
+[source, role="command"]
+----
+./gradlew tasks
+----
+--
+
 == Configure your project
 
 The project configuration is defined in the Gradle settings and build files.
-You will create these project configurations one section at a time. The Gradle Wrapper
-files will be included in the project's directories, in order to execute the Wrapper. 
-`gradlew` is required for unix based systems, and `gradlew.bat` is required for windows.
+You will create these project configurations one section at a time. 
 
 Gradle https://docs.gradle.org/current/dsl/org.gradle.api.initialization.Settings.html[settings^] 
 are used to instantiate and configure the project. This sample uses the `settings.gradle` 
@@ -322,8 +392,7 @@ task ordering.
 
 == Ready to run
 
-You can now run the build command to build and test the application. The Gradle Wrapper will 
-download gradle if necessary. 
+You can now run the build command to build and test the application.
 
 From the folder containing your [hotspot file=0]`build.gradle` file, run the command:
 
@@ -376,8 +445,6 @@ include::{common-includes}/os-tabs.adoc[]
 gradlew.bat integrationTest -i
 ----
 --
-
-
 [.tab_content.mac_section.linux_section]
 --
 [role='command']

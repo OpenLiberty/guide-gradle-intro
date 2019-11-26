@@ -48,9 +48,9 @@ a regression that requires a fix to your code.
 
 Using this guide, you will create a Gradle build definition file (`build.gradle`) for the 
 web application project, and use it to build the application. You will then create a simple, 
-automated test, and configure Gradle to run it after building the application. The Gradle Wrapper 
-is a script that invokes a declared version of Gradle, downloading it beforehand if necessary. 
-The Wrapper is also the recommended way to execute any Gradle build. 
+automated test, and configure Gradle to run it after building the application.
+
+To learn more about Gradle, please visit: https://docs.gradle.org/current/userguide/userguide.html[Official website^]
 
 [role='command']
 include::{common-includes}/gitclone.adoc[]
@@ -79,7 +79,7 @@ is in the `start/src` directory:
 
 == Testing Gradle
 
-If you do not have `gradle` installed, running the gradle wrapper will install gradle. The Gradle 
+If you do not have Gradle installed, running the Gradle Wrapper will automatically install Gradle. The Gradle 
 Wrapper files are included in the project directory. Learn more about Gradle Wrapper on the 
 https://docs.gradle.org/current/userguide/gradle_wrapper.html[Official website^]."
 

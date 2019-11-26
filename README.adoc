@@ -95,7 +95,6 @@ gradlew.bat -v
 ----
 --
 
-
 [.tab_content.mac_section.linux_section]
 --
 [role='command']
@@ -103,12 +102,6 @@ gradlew.bat -v
 ./gradlew -v
 ----
 --
-
-
-[source, role="command"]
-----
-gradle -v
-----
 
 You should see information about the Gradle installation similar to this example:
 

@@ -50,7 +50,7 @@ Using this guide, you will create a Gradle build definition file (`build.gradle`
 web application project, and use it to build the application. You will then create a simple, 
 automated test, and configure Gradle to run it after building the application.
 
-To learn more about Gradle, please visit: https://docs.gradle.org/current/userguide/userguide.html[Official website^]
+Learn more about Gradle on the https://docs.gradle.org/current/userguide/userguide.html[official Gradle website^].
 
 [role='command']
 include::{common-includes}/gitclone.adoc[]
@@ -81,7 +81,7 @@ is in the `start/src` directory:
 
 If you do not have Gradle installed, running the Gradle Wrapper will automatically install Gradle. The Gradle 
 Wrapper files are included in the project directory. Learn more about Gradle Wrapper on the 
-https://docs.gradle.org/current/userguide/gradle_wrapper.html[Official website^]."
+https://docs.gradle.org/current/userguide/gradle_wrapper.html[official website^].
 
 Test that Gradle is installed properly by running the following command in a command line:
 

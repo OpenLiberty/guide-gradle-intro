@@ -1,13 +1,10 @@
 language: java
 before_script:
 - unset _JAVA_OPTIONS
-- curl -s "https://get.sdkman.io" | bash
-- source "$HOME/.sdkman/bin/sdkman-init.sh"
-- sdk install gradle
-- gradle -version
 - cd finish
 script:
-- gradle build -x openBrowser -x openTestReport -i
+- ./gradlew -version
+- ./gradlew build -x openBrowser -x openTestReport -i
 - serverName=$(build/wlp/bin/server list | cut -d '.' -f2| tr -d '\n');
 - build=$(grep "Open Liberty" build/wlp/usr/servers/"$serverName"/logs/console.log
   | cut -d' ' -f5 | cut -d')' -f1 ); release=$( echo "$build" | cut -d'/' -f1); number=$(

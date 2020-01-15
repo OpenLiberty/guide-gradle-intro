@@ -50,6 +50,8 @@ Using this guide, you will create a Gradle build definition file (`build.gradle`
 web application project, and use it to build the application. You will then create a simple, 
 automated test, and configure Gradle to run it after building the application.
 
+Learn more about Gradle on the https://docs.gradle.org/current/userguide/userguide.html[official Gradle website^].
+
 [role='command']
 include::{common-includes}/gitclone.adoc[]
 
@@ -75,47 +77,74 @@ is in the `start/src` directory:
             └── WEB-INF
 ----
 
-== Installing Gradle
+== Testing Gradle
 
-If you don't have Gradle Version 3 or higher installed, follow the instructions on the 
-https://gradle.org/install/[Gradle installation page^] for your operating system.
-Configure the environment variables so that you can run the `gradle` command.
+If you do not have Gradle installed, make sure that the `JAVA_HOME` environment variable is set, or that the Java application can run. Running the Gradle Wrapper automatically installs Gradle. To learn more about the Gradle Wrapper, see the https://docs.gradle.org/current/userguide/gradle_wrapper.html[Gradle Wrapper documentation^].
 
-Test that Gradle is installed properly by running the following command in a command line:
+Test that Gradle is installed properly by running the following command:
 
-[source, role="command"]
+include::{common-includes}/os-tabs.adoc[]
+
+[.tab_content.windows_section]
+--
+[role='command']
 ----
-gradle -v
+gradlew.bat -v
 ----
+--
+
+[.tab_content.mac_section.linux_section]
+--
+[role='command']
+----
+./gradlew -v
+----
+--
 
 You should see information about the Gradle installation similar to this example:
 
 [source, role="no_copy"]
 ----
 ------------------------------------------------------------
-Gradle 4.1
+Gradle 5.6.3
 ------------------------------------------------------------
 
-Build time:   2017-08-07 14:38:48 UTC
-Revision:     941559e020f6c357ebb08d5c67acdb858a3defc2
+Build time:   2019-10-18 00:28:36 UTC
+Revision:     bd168bbf5d152c479186a897f2cea494b7875d13
 
-Groovy:       2.4.11
-Ant:          Apache Ant(TM) Version 1.9.6 compiled on June 29 2015
+Kotlin:       1.3.41
+Groovy:       2.5.4
+Ant:          Apache Ant(TM) version 1.9.14 compiled on March 12 2019
 JVM:          1.8.0_144 (Oracle Corporation 25.144-b01)
-OS:           Mac OS X 10.12.6 x86_64
+OS:           Mac OS X 10.15.1 x86_64
+
 ----
 
 You can also view the default tasks available by running the following command:
 
+include::{common-includes}/os-tabs.adoc[]
+
+[.tab_content.windows_section]
+--
 [source, role="command"]
 ----
-gradle tasks
+gradlew.bat tasks
 ----
+--
+
+
+[.tab_content.mac_section.linux_section]
+--
+[source, role="command"]
+----
+./gradlew tasks
+----
+--
 
 == Configure your project
 
 The project configuration is defined in the Gradle settings and build files.
-You will create these project configurations one section at a time.
+You will create these project configurations one section at a time. 
 
 Gradle https://docs.gradle.org/current/dsl/org.gradle.api.initialization.Settings.html[settings^] 
 are used to instantiate and configure the project. This sample uses the `settings.gradle` 
@@ -364,10 +393,24 @@ build.gradle
 include::finish/build.gradle[]
 ----
 
+include::{common-includes}/os-tabs.adoc[]
+
+[.tab_content.windows_section]
+--
 [role='command']
 ----
-gradle build -i
+gradlew.bat build -i
 ----
+--
+
+
+[.tab_content.mac_section.linux_section]
+--
+[role='command']
+----
+./gradlew build -i
+----
+--
 
 The `-i` option provides additional information on the command line. The build takes a 
 little longer than before the test existed, but expect to see the browser opened with the 
@@ -384,10 +427,22 @@ HelloServlet.java
 include::finish/src/main/java/io/openliberty/guides/hello/HelloServlet.java[]
 ----
 
+include::{common-includes}/os-tabs.adoc[]
+
+[.tab_content.windows_section]
+--
 [role='command']
 ----
-gradle integrationTest -i
+gradlew.bat integrationTest -i
 ----
+--
+[.tab_content.mac_section.linux_section]
+--
+[role='command']
+----
+./gradlew integrationTest -i
+----
+--
 
 Then, check to see if the test fails.
 

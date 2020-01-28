@@ -19,7 +19,7 @@
 :page-related-guides: ['maven-intro']
 :common-includes: https://raw.githubusercontent.com/OpenLiberty/guides-common/master
 :page-seo-title: Building a Java web application using Gradle
-:page-seo-description: A getting started tutorial and an example on how to build and test a Java web application with a Gradle build configuration script using the Gradle War plug-in and Open Liberty Gradle plug-in.
+:page-seo-description: A getting started tutorial with examples of how to build and test a Java web application with a Gradle build configuration script using the Gradle War plug-in and Open Liberty Gradle plug-in.
 :source-highlighter: prettify
 :guide-author: Open Liberty
 = Building a web application with Gradle

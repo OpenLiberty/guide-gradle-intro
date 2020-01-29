@@ -1,18 +1,5 @@
-// tag::war[]
-apply plugin: 'war'
-// end::war[]
-// tag::liberty[]
 apply plugin: 'liberty'
-//end::liberty[]
-// tag::group[]
-group = 'io.openliberty.guides'
-// end::group[]
-// tag::version[]
-version = '1.0-SNAPSHOT'
-// end::version[]
-// tag::description[]
-description = "Gradle guide"
-// end::description[]
+apply plugin: 'war'
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
@@ -20,128 +7,47 @@ tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
 
-// tag::buildscript[]
+// configure liberty-gradle-plugin 
 buildscript {
     repositories {
         mavenCentral()
     }
     dependencies {
-        //tag::liberty-dependency[]
-        classpath 'net.wasdev.wlp.gradle.plugins:liberty-gradle-plugin:2.6.3'
-        //end::liberty-dependency[]
+        classpath 'io.openliberty.tools:liberty-gradle-plugin:3.0-M1'
     }
 }
-// end::buildscript[]
 
-// tag::repositories[]
 repositories {
     mavenCentral()
 }
-// end::repositories[]
 
-// tag::dependencies[]
 dependencies {
-    //tag::providecompile[]
-    providedCompile group:'javax.servlet', name:'javax.servlet-api', version:'4.0.1'
-    //end::providecompile[]
-    //tag::testcompile[]
-    //tag::commons[]
-    testCompile group:'commons-httpclient', name:'commons-httpclient', version:'3.1'
-    //end::commons[]
-    //tag::junit[]
-    testCompile group:'junit', name:'junit', version:'4.12'
-    //end::junit[]
-    //end::testcompile[]
-    //tag::libertyruntime[]
-    libertyRuntime group:'io.openliberty', name:'openliberty-runtime', version:'[17.0.0.4,)'
-    //end::libertyruntime[]
-}
-// end::dependencies[]
+    // provided dependencies
+    providedCompile 'jakarta.platform:jakarta.jakartaee-api:8.0.0'
+    providedCompile 'org.eclipse.microprofile:microprofile:3.2'
 
-// tag::ext[]
-ext {
-    appName = project.name
-    testServerHttpPort = 9080
-    testServerHttpsPort = 9443
-    warContext = appName
+    // test dependencies
+    testImplementation 'junit:junit:4.12'
+    testImplementation 'commons-httpclient:commons-httpclient:3.1'
+    testImplementation 'org.apache.cxf:cxf-rt-rs-client:3.3.4'
+    testImplementation 'org.apache.cxf:cxf-rt-rs-extension-providers:3.3.4'
+    testImplementation 'org.glassfish:javax.json:1.0.4'
+    testImplementation 'javax.xml.bind:jaxb-api:2.3.1'
 }
-// end::ext[]
 
-// tag::liberty2[]
-liberty {
-    server {
-        //tag::name[]
-        name = "${appName}Server"
-        //end::name[]
-        //tag::configfile[]
-        configFile = file("src/main/liberty/config/server.xml")
-        //end::configfile[]
-        //tag::bootstrapproperties[]
-        bootstrapProperties = ['default.http.port': testServerHttpPort,
-                               'default.https.port': testServerHttpsPort,
-                               'app.context.root': warContext]
-        //end::bootstrapproperties[]
-        //tag::packageliberty[]
-        packageLiberty {
-            archive = "$buildDir/${appName}.zip"
-            include = "usr"
-        }
-        //end::packageliberty[]
-    }
+ext  {
+    liberty.server.var.'default.http.port' = '9080'
+    liberty.server.var.'default.https.port' = '9443'
+    liberty.server.var.'app.context.root' = project.name
 }
-// end::liberty2[]
 
-// tag::war2[]
-war {
-    archiveName = "${baseName}.${extension}"
-}
-// end::war2[]
-
-// tag::tests[]
 test {
-    reports.html.destination = file("$buildDir/reports/unit")
-    reports.junitXml.destination = file("$buildDir/test-results/unit")
-    exclude '**/it/**'
-}
-
-task integrationTest(type: Test) {
-    group 'Verification'
-    description 'Runs the integration tests.'
-    reports.html.destination = file("$buildDir/reports/it")
-    reports.junitXml.destination = file("$buildDir/test-results/it")
-    include '**/it/**'
-    exclude '**/unit/**'
-// tag::sysproperties[]
-    systemProperties = ['liberty.test.port': testServerHttpPort, 'war.name': warContext]
-// end::sysproperties[]
-}
-// end::tests[]
-
-// tag::openbrowser[]
-task openBrowser {
-    description = 'Open browser to http://localhost:8080/${warContext}'
-    doLast {
-        java.awt.Desktop.desktop.browse
-            "http://localhost:${testServerHttpPort}/${appName}".toURI()
+    testLogging {
+        events 'passed', 'skipped', 'failed', 'standardOut'
+        exceptionFormat 'full'
     }
+    systemProperty 'http.port', liberty.server.var.'default.http.port'
+    systemProperty 'context.root',  project.name
 }
-// end::openbrowser[]
 
-// tag::opentestreport[]
-task openTestReport {
-    description = 'Open browser to the test report'
-    doLast {
-        java.awt.Desktop.desktop.browse file("$buildDir/reports/it/index.html").toURI()
-    }
-}
-// end::opentestreport[]
-
-// tag::depends[]
 clean.dependsOn 'libertyStop'
-check.dependsOn 'integrationTest'
-integrationTest.dependsOn 'libertyStart'
-integrationTest.finalizedBy 'libertyStop'
-integrationTest.finalizedBy 'openTestReport'
-libertyPackage.dependsOn 'libertyStop'
-// end::depends[]
-// end::whole[]

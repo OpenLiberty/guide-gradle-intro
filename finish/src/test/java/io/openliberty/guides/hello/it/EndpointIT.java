@@ -1,6 +1,6 @@
 // tag::copyright[]
 /*******************************************************************************
- * Copyright (c) 2017, 2019 IBM Corporation and others.
+ * Copyright (c) 2017, 2020 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -26,9 +26,10 @@ public class EndpointIT {
     @BeforeClass
     // tag::init[]
     public static void init() {
-        String port = System.getProperty("liberty.test.port");
-        String war = System.getProperty("war.name");
-        URL = "http://localhost:" + port + "/" + war + "/" + "servlet";
+        String port = System.getProperty("http.port");
+        String context = System.getProperty("context.root");
+        URL = "http://localhost:" + port + "/" + context + "/" + "servlet";
+        System.out.println("URL: " + URL);
     }
     // end::init[]
     // tag::test[]

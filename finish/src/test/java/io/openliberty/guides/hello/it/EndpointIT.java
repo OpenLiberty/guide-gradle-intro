@@ -13,6 +13,7 @@
 package io.openliberty.guides.hello.it;
 // tag::import[]
 import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.apache.commons.httpclient.HttpClient;

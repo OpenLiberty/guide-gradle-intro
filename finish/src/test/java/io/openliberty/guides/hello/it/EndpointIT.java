@@ -12,18 +12,18 @@
 // end::copyright[]
 package io.openliberty.guides.hello.it;
 // tag::import[]
-import static org.junit.Assert.*;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpStatus;
 import org.apache.commons.httpclient.methods.GetMethod;
 // end::import[]
-//tag::endpointit[]
+// tag::endpointit[]
 public class EndpointIT {
     private static String URL;
 
-    @BeforeClass
+    @BeforeAll
     // tag::init[]
     public static void init() {
         String port = System.getProperty("http.port");
@@ -35,6 +35,7 @@ public class EndpointIT {
     // tag::test[]
     @Test
     // end::test[]
+    @Order(1)
     public void testServlet() throws Exception {
         HttpClient httpClient = new HttpClient();
         GetMethod httpGetMethod = new GetMethod(URL);
@@ -42,10 +43,10 @@ public class EndpointIT {
         try {
             int actualStatusCode = httpClient.executeMethod(httpGetMethod);
             int expectedStatusCode = HttpStatus.SC_OK;
-            assertEquals("HTTP GET failed", expectedStatusCode, actualStatusCode);
+            assertEquals(expectedStatusCode, actualStatusCode, "HTTP GET failed");
             String response = httpGetMethod.getResponseBodyAsString(1000);
-            assertTrue("Unexpected response body", 
-                response.contains("Hello! Is Gradle working for you?"));
+            assertTrue(response.contains("Hello! Is Gradle working for you?"),
+                    "Unexpected response body");
         } finally {
             httpGetMethod.releaseConnection();
         }

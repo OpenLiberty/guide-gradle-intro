@@ -1,4 +1,8 @@
 build/
 .gradle/
+.idea
+.settings
+.classpath
+.project
 README.html
 .DS_Store

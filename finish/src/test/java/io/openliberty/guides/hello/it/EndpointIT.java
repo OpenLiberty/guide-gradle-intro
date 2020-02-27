@@ -33,6 +33,7 @@ public class EndpointIT {
         System.out.println("URL: " + URL);
     }
     // end::init[]
+    
     // tag::test[]
     @Test
     // end::test[]

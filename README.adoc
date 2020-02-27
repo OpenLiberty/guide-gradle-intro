@@ -210,14 +210,14 @@ servers. The compatibility and encoding settings are for Java.
 
 The [hotspot=buildscript file=1]`buildscript` section defines plug-in versions to use in the 
 build and where to find them. This guide uses the [hotspot=liberty-dependency file=1]`liberty` plug-in, 
-which is available from the [hotspot=buildscriptmaven file=1]`Maven Central Repository`.
+which is available from the [hotspot=buildmaven file=1]`Maven Central Repository`.
 
 The [hotspot=repositories file=1]`repositories` section defines where to find the dependencies 
 that you are using in the build. For this build, everything you need is in [hotspot=maven file=1]`Maven Central`.
 
 The [hotspot=dependencies file=1]`dependencies` section defines what is needed to compile and 
 test the code. This section also defines how to run the application. The 
-[hotspot=providecompile file=1]`providedCompile` dependencies are APIs that are needed to compile the 
+[hotspot=providedcompile file=1]`providedCompile` dependencies are APIs that are needed to compile the 
 application, but they do not need to be packaged with the application because Open Liberty 
 provides their implementation at run time. The [hotspot=testimplementation file=1]`testImplementation` dependencies 
 are needed to compile and run tests.
@@ -262,7 +262,7 @@ The test class name ends in `IT` to indicate that it contains an integration tes
 The integration tests are put in the `it` folder by convention.
 
 The [hotspot=tests file=1]`test` section in your build file is added by the Java plug-in, and the 
-[hotspot=junit file=1]`useJUnitPlatform()` line configures Gradle to add JUnit 5 support.
+[hotspot=junitplatform file=1]`useJUnitPlatform()` line configures Gradle to add JUnit 5 support.
 
 The [hotspot=systemproperty file=1]`systemProperty` configuration  defines some variables needed by 
 the test class. While the port number and context-root information can be 

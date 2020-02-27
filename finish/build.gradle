@@ -15,9 +15,9 @@ tasks.withType(JavaCompile) {
 // tag::buildscript[]
 buildscript {
     repositories {
-        // tag::buildscriptmaven[]
+        // tag::buildmaven[]
         mavenCentral()
-        // end::buildscriptmaven[]
+        // end::buildmaven[]
     }
     dependencies {
         // tag::liberty-dependency[]
@@ -76,11 +76,11 @@ task openBrowser {
 }
 // end::openbrowser[]
 
-// tag::test[]
+// tag::tests[]
 test {
-    // tag::junit[]
+    // tag::junitplatform[]
     useJUnitPlatform()
-    // end::junit[]
+    // end::junitplatform[]
     testLogging {
         events 'passed', 'skipped', 'failed', 'standardOut'
         exceptionFormat 'full'
@@ -91,10 +91,10 @@ test {
     // end::httpport[]
     // tag::contextroot[]
     systemProperty 'context.root',  liberty.server.var.'app.context.root'
-    // tag::contextroot[]
+    // end::contextroot[]
     // end::systemproperty[]
 }
-// end::test[]
+// end::tests[]
 
 // tag::depends[]
 test.dependsOn 'libertyStart'

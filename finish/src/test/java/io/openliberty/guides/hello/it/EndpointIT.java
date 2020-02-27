@@ -36,7 +36,6 @@ public class EndpointIT {
     // tag::test[]
     @Test
     // end::test[]
-    @Order(1)
     public void testServlet() throws Exception {
         HttpClient httpClient = new HttpClient();
         GetMethod httpGetMethod = new GetMethod(URL);

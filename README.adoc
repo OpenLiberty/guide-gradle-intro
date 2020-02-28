@@ -166,7 +166,7 @@ Gradle https://docs.gradle.org/current/dsl/org.gradle.api.initialization.Setting
 are used to instantiate and configure the project. This sample uses the [hotspot file=0]`settings.gradle` 
 to name the project `GradleSample`.
 
-[role="code_command file=0", subs="quotes"] 
+[role="code_command hotspot file=0", subs="quotes"] 
 ---- 
 #Create the Gradle settings file.#
 `settings.gradle`
@@ -196,7 +196,7 @@ file so that you understand each part.
 |===
 
 
-[role="code_command file=1", subs="quotes"] 
+[role="code_command hotspot file=1", subs="quotes"] 
 ---- 
 #Create the build file.#
 `build.gradle`
@@ -281,7 +281,7 @@ that runs on the server (integration tests). In this example, you will create a 
 integration test that checks that the web page opens and that the correct response is 
 returned when the link is clicked.
 
-[role="code_command hotspot", subs="quotes"] 
+[role="code_command hotspot file=0", subs="quotes"] 
 ---- 
 #Create the `EndpointIT` test class.#
 `src/test/java/io/openliberty/guides/hello/it/EndpointIT.java`

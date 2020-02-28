@@ -163,7 +163,7 @@ The project configuration is defined in the Gradle settings and build files.
 You will create these project configurations one section at a time. 
 
 Gradle https://docs.gradle.org/current/dsl/org.gradle.api.initialization.Settings.html[settings^] 
-are used to instantiate and configure the project. This sample uses the `settings.gradle` 
+are used to instantiate and configure the project. This sample uses the [hotspot file=0]`settings.gradle` 
 to name the project `GradleSample`.
 
 [role="code_command file=0", subs="quotes"] 
@@ -172,11 +172,11 @@ to name the project `GradleSample`.
 `settings.gradle`
 ---- 
 
-This `settings.gradle` file isn't required for a single-module Gradle project. 
+This [hotspot file=0]`settings.gradle` file isn't required for a single-module Gradle project. 
 Without this definition, by default, the project name is set as the name of the folder in 
 which it is contained (`start` for this example).
 
-Let's go through the `build.gradle` 
+Let's go through the [hotspot file=1]`build.gradle` 
 file so that you understand each part.
 
 [cols="40, 100"]
@@ -227,6 +227,28 @@ If you use a value more than once in your build file, you can simplify updates b
 it as a variable here and referring to the variable later in the build file.
 This project defines variables for the application ports and the context-root.
 
+== Running the application
+
+Start Open Liberty in development mode, which starts the Open Liberty server and listens for file changes:
+
+[role='command']
+----
+./gradlew libertyDev
+----
+
+After you see the following message, your application server in development mode is ready.
+
+[role="no_copy"]
+----
+Press the Enter key to run tests on demand.
+----
+
+The development mode holds your command prompt to listen for file changes.
+You need to open another command prompt to continue, or simply open the project in your editor.
+
+Navigate your browser to the http://localhost:9080/GradleSample/servlet[^] URL to access the application. 
+The servlet returns a simple response of `Hello! Is Gradle working for you?`.
+
 == Testing the web application
 
 //file 0
@@ -241,6 +263,13 @@ build.gradle
 [source, groovy, linenums, role='code_column']
 ----
 include::finish/build.gradle[]
+----
+
+//file 2
+HelloServlet.java
+[source, Java, linenums, role='code_column hide_tags=comment']
+----
+include::finish/src/main/java/io/openliberty/guides/hello/HelloServlet.java[]
 ----
 
 One of the benefits of building an application with a build system like Gradle is that 
@@ -293,8 +322,8 @@ The scope for each of the dependencies is set to [hotspot=testimplementation fil
 because the libraries are needed only during the Gradle test phase and do not need to be 
 packaged with the application.
 
-Now, during the build, Gradle installs the application and then runs any integration test 
-classes in the `it` folder.
+Now, the created WAR file contains the web application, and development mode can run any integration 
+test classes that it finds. Integration test classes are classes with names that end in `IT`.
 
 The directory structure of the project in the `start` folder should now look like this 
 example:
@@ -315,89 +344,25 @@ example:
 
 ----
 
-== A few more pieces
-
-//file 0
-build.gradle 
-[source, groovy, linenums, role='code_column']
-----
-include::finish/build.gradle[]
-----
+=== A few more pieces
 
 We show a few more Gradle tricks in this example with the [hotspot=openbrowser file=0]`openBrowser` task. 
 This task displays your application and the test report in the default browser.
 
 The final Gradle magic to add is the task dependency directives.
-The [hotspot=depends file=0]`dependency directives` organizes task execution. 
+The [hotspot=depends file=1]`dependency directives` organizes task execution. 
 In this case, the test task is set to run after the server is started, and the
 [hotspot=openbrowser file=0]`openBrowser` task is executed after the test task is finalized.
 
+=== Running the tests
 
-== Ready to run
+Since you started Open Liberty in development mode at the start of the guide, press the `enter/return` 
+key to run the tests. You will see that the browser opened up the test summary page, which ran one successful test.
 
-//file 0
-build.gradle   
-[source, groovy, linenums, role='code_column']
-----
-include::finish/build.gradle[]
-----
-
-//file 1
-HelloServlet.java
-[source, Java, linenums, role='code_column hide_tags=comment']
-----
-include::finish/src/main/java/io/openliberty/guides/hello/HelloServlet.java[]
-----
-
-You can now run the build command to build and test the application.
-
-From the folder containing your [hotspot file=0]`build.gradle` file, run the command:
-
-include::{common-includes}/os-tabs.adoc[]
-
-[.tab_content.windows_section]
---
-[role='command']
-----
-gradlew.bat build -i
-----
---
-
-[.tab_content.mac_section.linux_section]
---
-[role='command']
-----
-./gradlew build -i
-----
---
-
-The `-i` option provides additional information on the command line. The build takes a 
-little longer than before the test existed, but expect to see the browser opened with the 
-test summary displayed.
-
-To see whether the test detects a failure, change the response string in the 
-[hotspot file=1]`src/main/java/io/openliberty/guides/hello/HelloServlet.java` file 
+To see whether the test detects a failure, change the [hotspot=responsestring file=2]`response string` in the 
+[hotspot file=2]`src/main/java/io/openliberty/guides/hello/HelloServlet.java` file 
 so that it doesn't match the string that the test is looking for. Then rerun the Gradle 
-build command to automatically restart and retest your application:
-
-include::{common-includes}/os-tabs.adoc[]
-
-[.tab_content.windows_section]
---
-[role='command']
-----
-gradlew.bat build -i
-----
---
-[.tab_content.mac_section.linux_section]
---
-[role='command']
-----
-./gradlew build -i
-----
---
-
-Then, check to see if the test fails.
+test to automatically restart and retest your application to check to see if the test fails.
 
 == Great work! You're done!
 

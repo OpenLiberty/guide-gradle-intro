@@ -65,7 +65,7 @@ ext  {
 
 // tag::openbrowser[]
 task openBrowser {
-    description = 'Open browser to http://localhost:8080/${warContext}'
+    description = 'Open browser to the running application'
     doLast {
         String port = liberty.server.var.'default.http.port'
         String context = liberty.server.var.'app.context.root'

@@ -186,11 +186,8 @@ file so that you understand each part.
                             build the project and some basic project configuration.
 | buildscript           |   Where to find plug-ins for download.
 | repositories          |   Where to find dependencies for download.
-| dependencies          |   Java dependencies that are required for compiling, testing, and running 
-                            the application are included here. You can also define your Liberty 
-                 the application are included here. You can also define your Liberty 
-                            the application are included here. You can also define your Liberty 
-                            runtime dependency in this section.
+| dependencies          |   Java dependencies that are required for compiling, testing, 
+                            and running the application are included here.
 | ext                   |   Gradle extra properties extension for project level properties.
 | test                  |   Unit test and integration test configuration.
 |===

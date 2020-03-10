@@ -1,6 +1,6 @@
 // tag::copyright[]
 /*******************************************************************************
- * Copyright (c) 2017, 2019 IBM Corporation and others.
+ * Copyright (c) 2017, 2020 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,25 +12,28 @@
 // end::copyright[]
 package io.openliberty.guides.hello.it;
 // tag::import[]
-import static org.junit.Assert.*;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpStatus;
 import org.apache.commons.httpclient.methods.GetMethod;
 // end::import[]
-//tag::endpointit[]
+// tag::endpointit[]
 public class EndpointIT {
     private static String URL;
 
-    @BeforeClass
+    @BeforeAll
     // tag::init[]
     public static void init() {
-        String port = System.getProperty("liberty.test.port");
-        String war = System.getProperty("war.name");
-        URL = "http://localhost:" + port + "/" + war + "/" + "servlet";
+        String port = System.getProperty("http.port");
+        String context = System.getProperty("context.root");
+        URL = "http://localhost:" + port + "/" + context + "/" + "servlet";
+        System.out.println("URL: " + URL);
     }
     // end::init[]
+    
     // tag::test[]
     @Test
     // end::test[]
@@ -41,10 +44,10 @@ public class EndpointIT {
         try {
             int actualStatusCode = httpClient.executeMethod(httpGetMethod);
             int expectedStatusCode = HttpStatus.SC_OK;
-            assertEquals("HTTP GET failed", expectedStatusCode, actualStatusCode);
+            assertEquals(expectedStatusCode, actualStatusCode, "HTTP GET failed");
             String response = httpGetMethod.getResponseBodyAsString(1000);
-            assertTrue("Unexpected response body", 
-                response.contains("Hello! Is Gradle working for you?"));
+            assertTrue(response.contains("Hello! Is Gradle working for you?"),
+                    "Unexpected response body");
         } finally {
             httpGetMethod.releaseConnection();
         }

@@ -364,36 +364,6 @@ test to automatically restart and retest your application to check to see if the
 [role='command']
 include::{common-includes}/devmode-quit.adoc[]
 
-== Gradle vs Maven
-
-Maven is another build tool similar to Gradle. However, Maven has a few key differences from Gradle
-
-[cols="2*", options="header"] 
-|===
-| Maven 
-| Gradle
-
-| Builds defined using `.xml` files
-| Builds defined using http://groovy-lang.org/[Groovy^]
-
-| Builds in fixed linear phases
-| Builds with graph of task dependencies
-
-| Customize builds using plugins
-| Customize builds using code
-
-| Mandatory Java compilation
-| Avoids Java compilation
-
-|===
-
-Benefits of Gradle over Maven include the customization through code allowing for greater flexibility than the plugins provided for Maven. 
-Gradle also makes use of a build cache to check for changes.
-This cuts down on build times especially on larger projects when changes to only one part of it are made. 
-
-Ultimately, both build tools accomplish the same goals. 
-You will have to decide which is more appropriate for your team and project. 
-
 == Great work! You're done!
 
 You built and tested a web application project running on an Open Liberty server using Gradle.

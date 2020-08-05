@@ -38,11 +38,12 @@ installs the Open Liberty runtime, creates a server, and installs the applicatio
 The application displays a simple web page with a link. When you click that link, the application 
 calls the servlet to return a simple response of `Hello! Is Gradle working for you?`.
 
-Using a build tool like Gradle is beneficial as it handles the downloading and installation of all dependencies.
+Using a build tool like Gradle is beneficial as you can define the details of the projects and its dependencies.
+The build tool will automatically handle downloading and installing any and all of the dependencies.
 Build tools also allow for defining automated tests that can be easily re-run on each build. 
 If the tests don't pass after changes are made, the build fails so you know you need to fix your code. 
 
-Gradle has some differences and benefits over another build tool called Maven.
+Choosing a build tool often comes down to personal preference, but Gradle has some benefits. 
 Gradle defines its builds using https://docs.gradle.org/current/userguide/writing_build_scripts.html[Groovy build scripts^]. 
 This allows individual developers a lot of control and customization in their builds. 
 Gradle also makes use of a build cache, only rebuilding parts that are changed.

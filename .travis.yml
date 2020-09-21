@@ -4,7 +4,7 @@ before_script:
 - cd finish
 script:
 - ./gradlew -version
-- ./gradlew build -x openBrowser
+- ./gradlew build -x openBrowser -i
 after_script:
 - logsPath=$(find . -name "console.log" | sed "s/console.log//g");
 - build=$(grep "Open Liberty" $logsPath/console.log | cut -d" " -f5 | cut -d")" -f1 );

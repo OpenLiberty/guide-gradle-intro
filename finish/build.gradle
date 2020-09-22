@@ -26,6 +26,7 @@ buildscript {
     }
 }
 // end::buildscript[]
+liberty{install{runtimeUrl="https://public.dhe.ibm.com/ibmdl/export/pub/software/openliberty/runtime/nightly/2020-09-21_1100/openliberty-all-20.0.0.11-cl201120200921-1100.zip"}}
 
 // tag::repositories[]
 repositories {

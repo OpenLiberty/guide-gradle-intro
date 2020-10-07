@@ -85,7 +85,7 @@ is in the `start/src` directory:
 
 If you do not have Gradle installed, make sure that the `JAVA_HOME` environment variable is set, or that the Java application can run. Running the Gradle Wrapper automatically installs Gradle. To learn more about the Gradle Wrapper, see the https://docs.gradle.org/current/userguide/gradle_wrapper.html[Gradle Wrapper documentation^].
 
-Ensure that you are in the `start` directory. Test that Gradle is installed properly by running the following command:
+Run the following commands to navigate to the `start` directory and verify that Gradle was installed correctly:
 
 include::{common-includes}/os-tabs.adoc[]
 
@@ -93,6 +93,7 @@ include::{common-includes}/os-tabs.adoc[]
 --
 [role='command']
 ----
+cd start
 gradlew.bat -v
 ----
 --
@@ -101,6 +102,7 @@ gradlew.bat -v
 --
 [role='command']
 ----
+cd start
 ./gradlew -v
 ----
 --

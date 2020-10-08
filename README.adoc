@@ -38,17 +38,16 @@ installs the Open Liberty runtime, creates a server, and installs the applicatio
 The application displays a simple web page with a link. When you click that link, the application 
 calls the servlet to return a simple response of `Hello! Is Gradle working for you?`.
 
-Using a build tool like Gradle is beneficial as you can define the details of the projects and its dependencies.
-The build tool will automatically handle downloading and installing any and all of the dependencies.
-Build tools also allow for defining automated tests that can be easily re-run on each build. 
-If the tests don't pass after changes are made, the build fails so you know you need to fix your code. 
+One benefit of using a build tool like Gradle is that you can define the details of the project and any dependencies it has, and then Gradle automatically downloads and installs the dependencies.
+Another benefit of using Gradle is that it can run repeatable, automated tests on the application. 
+You could, of course, test your application manually by starting a server and pointing a web browser at the application URL. 
+Automated tests are a much better approach because you can easily rerun the same tests each time the application is built. 
+If the tests don't pass after you've made a change to the application, the build fails, and you know that you introduced a regression that requires a fix to your code. 
 
-Choosing a build tool often comes down to personal preference, but Gradle has some benefits. 
-Gradle defines its builds using https://docs.gradle.org/current/userguide/writing_build_scripts.html[Groovy build scripts^]. 
-This allows individual developers a lot of control and customization in their builds. 
-Gradle also makes use of a build cache, only rebuilding parts that are changed.
-This reduces build times and increases performance in larger projects.
-This makes Gradle a good choice in larger, more complex projects. 
+Choosing a build tool often comes down to personal preference, but you might choose to use Gradle for several reasons. 
+Gradle defines its builds using https://docs.gradle.org/current/userguide/writing_build_scripts.html[Groovy build scripts^], which gives you a lot of control and customization in your builds. 
+Gradle also makes use of a build cache, only rebuilding parts of your application that are changed, which saves build time in larger projects. 
+So Gradle can be a good choice in larger, more complex projects.
 
 Using this guide, you will create a Gradle build definition file (`build.gradle`) for the 
 web application project, and use it to build the application. You will then create a simple, 

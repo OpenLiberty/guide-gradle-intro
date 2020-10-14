@@ -44,7 +44,7 @@ You could, of course, test your application manually by starting a server and po
 Automated tests are a much better approach because you can easily rerun the same tests each time the application is built. 
 If the tests don't pass after you've made a change to the application, the build fails, and you know that you introduced a regression that requires a fix to your code. 
 
-Choosing a build tool often comes down to personal preference, but you might choose to use Gradle for several reasons. 
+Choosing a build tool often comes down to personal or organizational preference, but you might choose to use Gradle for several reasons. 
 Gradle defines its builds using https://docs.gradle.org/current/userguide/writing_build_scripts.html[Groovy build scripts^], which gives you a lot of control and customization in your builds. 
 Gradle also makes use of a build cache, only rebuilding parts of your application that are changed, which saves build time in larger projects. 
 So Gradle can be a good choice in larger, more complex projects.

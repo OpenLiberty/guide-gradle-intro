@@ -9,7 +9,7 @@ do
     esac
 done
 
-sed -i "\#end::buildScript[]#a liberty { install { runtimeUrl=\"https://public.dhe.ibm.com/ibmdl/export/pub/software/openliberty/runtime/nightly/"$DATE"/"$DRIVER"\"}}" build.gradle
+sed -i "\#// end::buildscript[]#a liberty { install { runtimeUrl=\"https://public.dhe.ibm.com/ibmdl/export/pub/software/openliberty/runtime/nightly/"$DATE"/"$DRIVER"\"}}" build.gradle
 cat build.gradle
 
 ../scripts/testApp.sh

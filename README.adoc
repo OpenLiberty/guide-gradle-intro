@@ -14,7 +14,6 @@
 :page-guide-category: basic
 :page-essential: true
 :page-essential-order: 2
-:page-tags: []
 :page-permalink: /guides/{projectid}
 :page-related-guides: ['maven-intro']
 :common-includes: https://raw.githubusercontent.com/OpenLiberty/guides-common/prod

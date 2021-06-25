@@ -1,4 +1,4 @@
-// Copyright (c) 2017, 2020 IBM Corporation and others.
+// Copyright (c) 2017, 2021 IBM Corporation and others.
 // Licensed under Creative Commons Attribution-NoDerivatives
 // 4.0 International (CC BY-ND 4.0)
 //   https://creativecommons.org/licenses/by-nd/4.0/
@@ -14,10 +14,9 @@
 :page-guide-category: basic
 :page-essential: true
 :page-essential-order: 2
-:page-tags: ['Gradle', 'Getting Started']
 :page-permalink: /guides/{projectid}
 :page-related-guides: ['maven-intro']
-:common-includes: https://raw.githubusercontent.com/OpenLiberty/guides-common/master
+:common-includes: https://raw.githubusercontent.com/OpenLiberty/guides-common/prod
 :page-seo-title: Building a Java web application using Gradle
 :page-seo-description: A getting started tutorial with examples of how to build and test a Java web application with a Gradle build configuration script using the Gradle War plug-in and Open Liberty Gradle plug-in.
 :source-highlighter: prettify
@@ -33,7 +32,7 @@ Learn how to build and test a simple web application using Gradle and Open Liber
 
 You will learn how to build and test a simple web servlet application using the Gradle `war` 
 plug-in and the Liberty Gradle plug-in. The `war` plug-in compiles and builds the application 
-code. The https://github.com/WASdev/ci.gradle/blob/master/README.md[`liberty` Gradle plug-in^] 
+code. The https://github.com/WASdev/ci.gradle/blob/main/README.md[`liberty` Gradle plug-in^] 
 installs the Open Liberty runtime, creates a server, and installs the application to run and test.
 The application displays a simple web page with a link. When you click that link, the application 
 calls the servlet to return a simple response of `Hello! Is Gradle working for you?`.

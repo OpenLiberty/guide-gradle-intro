@@ -170,7 +170,7 @@ to name the project `GradleSample`.
 
 [role="code_command hotspot file=0", subs="quotes"] 
 ---- 
-#Create the Gradle settings file.#
+#Create the Gradle settings file in the `start` directory.#
 `settings.gradle`
 ---- 
 
@@ -197,7 +197,7 @@ file so that you understand each part.
 
 [role="code_command hotspot file=1", subs="quotes"] 
 ---- 
-#Create the build file.#
+#Create the build file in the `start` directory.#
 `build.gradle`
 ---- 
 
@@ -283,7 +283,7 @@ returned when the link is clicked.
 
 [role="code_command hotspot file=0", subs="quotes"] 
 ---- 
-#Create the `EndpointIT` test class.#
+#Create the `EndpointIT` test class in the `start` directory.#
 `src/test/java/io/openliberty/guides/hello/it/EndpointIT.java`
 ---- 
 

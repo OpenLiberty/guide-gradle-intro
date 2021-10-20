@@ -283,7 +283,7 @@ returned when the link is clicked.
 
 [role="code_command hotspot file=0", subs="quotes"] 
 ---- 
-#Create the `EndpointIT` test class in the `start` directory.#
+#Create the `EndpointIT` test class.#
 `src/test/java/io/openliberty/guides/hello/it/EndpointIT.java`
 ---- 
 

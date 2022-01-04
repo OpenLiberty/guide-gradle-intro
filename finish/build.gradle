@@ -21,7 +21,7 @@ buildscript {
     }
     dependencies {
         // tag::liberty-dependency[]
-        classpath 'io.openliberty.tools:liberty-gradle-plugin:3.1.2'
+        classpath 'io.openliberty.tools:liberty-gradle-plugin:3.3'
         // end::liberty-dependency[]
     }
 }
@@ -40,13 +40,13 @@ dependencies {
     // provided dependencies
     // tag::providedcompile[]
     providedCompile 'jakarta.platform:jakarta.jakartaee-api:8.0.0'
-    providedCompile 'org.eclipse.microprofile:microprofile:4.0.1'
+    providedCompile 'org.eclipse.microprofile:microprofile:4.1'
     // end::providedcompile[]
 
     // test dependencies
     // tag::testimplementation[]
     // tag::junit[]
-    testImplementation 'org.junit.jupiter:junit-jupiter:5.7.1'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.8.1'
     // end::junit[]
     // tag::commons[]
     testImplementation 'commons-httpclient:commons-httpclient:3.1'

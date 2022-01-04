@@ -1,4 +1,4 @@
-// Copyright (c) 2017, 2021 IBM Corporation and others.
+// Copyright (c) 2017, 2022 IBM Corporation and others.
 // Licensed under Creative Commons Attribution-NoDerivatives
 // 4.0 International (CC BY-ND 4.0)
 //   https://creativecommons.org/licenses/by-nd/4.0/
@@ -356,8 +356,9 @@ In this case, the test task is set to run after the server is started, and the
 
 === Running the tests
 
-Since you started Open Liberty in development mode at the start of the guide, press the `enter/return` 
-key to run the tests. You will see that the browser opened up the test summary page, which ran one successful test.
+Because you started Open Liberty in development mode at the start of the guide, press the `enter/return` 
+key from the command-line session where you started dev mode to run the tests.
+You will see that the browser opened up the test summary page, which ran one successful test.
 
 To see whether the test detects a failure, change the [hotspot=responsestring file=2]`response string` in the 
 [hotspot file=2]`src/main/java/io/openliberty/guides/hello/HelloServlet.java` file 

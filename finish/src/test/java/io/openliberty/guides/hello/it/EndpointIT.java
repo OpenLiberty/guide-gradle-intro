@@ -12,6 +12,7 @@
 // end::copyright[]
 package io.openliberty.guides.hello.it;
 // tag::import[]
+
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.BeforeAll;
@@ -20,6 +21,7 @@ import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpStatus;
 import org.apache.commons.httpclient.methods.GetMethod;
 // end::import[]
+
 // tag::endpointit[]
 public class EndpointIT {
     private static String URL;

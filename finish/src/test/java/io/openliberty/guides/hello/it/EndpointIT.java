@@ -7,7 +7,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     IBM Corporation - initial API and implementation
+ *     IBM Corporation - Initial implementation
  *******************************************************************************/
 // end::copyright[]
 package io.openliberty.guides.hello.it;
@@ -33,7 +33,7 @@ public class EndpointIT {
         System.out.println("URL: " + URL);
     }
     // end::init[]
-    
+
     // tag::test[]
     @Test
     // end::test[]

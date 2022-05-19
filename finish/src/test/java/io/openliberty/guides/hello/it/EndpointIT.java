@@ -13,7 +13,8 @@
 package io.openliberty.guides.hello.it;
 // tag::import[]
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -24,15 +25,15 @@ import org.apache.commons.httpclient.methods.GetMethod;
 
 // tag::endpointit[]
 public class EndpointIT {
-    private static String URL;
+    private static String webURL;
 
     @BeforeAll
     // tag::init[]
     public static void init() {
         String port = System.getProperty("http.port");
         String context = System.getProperty("context.root");
-        URL = "http://localhost:" + port + "/" + context + "/" + "servlet";
-        System.out.println("URL: " + URL);
+        webURL = "http://localhost:" + port + "/" + context + "/" + "servlet";
+        System.out.println("URL: " + webURL);
     }
     // end::init[]
 
@@ -41,7 +42,7 @@ public class EndpointIT {
     // end::test[]
     public void testServlet() throws Exception {
         HttpClient httpClient = new HttpClient();
-        GetMethod httpGetMethod = new GetMethod(URL);
+        GetMethod httpGetMethod = new GetMethod(webURL);
         // tag::try[]
         try {
             int actualStatusCode = httpClient.executeMethod(httpGetMethod);

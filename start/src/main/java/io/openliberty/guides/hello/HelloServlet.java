@@ -1,3 +1,4 @@
+// tag::copyright[]
 /*******************************************************************************
  * Copyright (c) 2017, 2022 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
@@ -8,6 +9,7 @@
  * Contributors:
  *     IBM Corporation - Initial implementation
  *******************************************************************************/
+// end::copyright[]
 package io.openliberty.guides.hello;
 
 import java.io.IOException;
@@ -18,7 +20,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet(urlPatterns="/servlet")
+@WebServlet(urlPatterns = "/servlet")
 public class HelloServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 

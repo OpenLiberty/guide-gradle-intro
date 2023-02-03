@@ -206,7 +206,7 @@ If you use a value more than once in your build file, you can simplify updates b
 it as a variable here and referring to the variable later in the build file.
 This project defines variables for the application ports and the context-root.
 
-You can also view the default and Liberty tasks available by running the following command:
+You can view the default and Liberty tasks available by running the following command:
 
 include::{common-includes}/os-tabs.adoc[]
 

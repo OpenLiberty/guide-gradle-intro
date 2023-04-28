@@ -1,6 +1,6 @@
 // tag::copyright[]
 /*******************************************************************************
- * Copyright (c) 2017, 2022 IBM Corporation and others.
+ * Copyright (c) 2017, 2023 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -10,16 +10,21 @@
  *******************************************************************************/
 // end::copyright[]
 package io.openliberty.guides.hello.it;
-// tag::import[]
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+// tag::import[]
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import org.junit.jupiter.api.Order;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
+import org.apache.http.HttpStatus;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.apache.commons.httpclient.HttpClient;
-import org.apache.commons.httpclient.HttpStatus;
-import org.apache.commons.httpclient.methods.GetMethod;
 // end::import[]
 
 // tag::endpointit[]
@@ -40,18 +45,31 @@ public class EndpointIT {
     @Test
     // end::test[]
     public void testServlet() throws Exception {
-        HttpClient httpClient = new HttpClient();
-        GetMethod httpGetMethod = new GetMethod(webURL);
+
+        CloseableHttpClient client = HttpClientBuilder.create().build();
+        HttpGet httpGet = new HttpGet(webURL);
+        CloseableHttpResponse response = null;
+
         // tag::try[]
         try {
-            int actualStatusCode = httpClient.executeMethod(httpGetMethod);
-            int expectedStatusCode = HttpStatus.SC_OK;
-            assertEquals(expectedStatusCode, actualStatusCode, "HTTP GET failed");
-            String response = httpGetMethod.getResponseBodyAsString(1000);
-            assertTrue(response.contains("Hello! Is Gradle working for you?"),
-                    "Unexpected response body");
+            response = client.execute(httpGet);
+
+            int statusCode = response.getStatusLine().getStatusCode();
+            assertEquals(HttpStatus.SC_OK, statusCode, "HTTP GET failed");
+
+            BufferedReader reader = new BufferedReader(new InputStreamReader(
+                                        response.getEntity().getContent()));
+            String line;
+            StringBuffer buffer = new StringBuffer();
+            while ((line = reader.readLine()) != null) {
+                buffer.append(line);
+            }
+            reader.close();
+            assertTrue(buffer.toString().contains("Hello! Is Gradle working for you?"),
+                "Unexpected response body: " + buffer.toString());
         } finally {
-            httpGetMethod.releaseConnection();
+            response.close();
+            httpGet.releaseConnection();
         }
         // end::try[]
     }

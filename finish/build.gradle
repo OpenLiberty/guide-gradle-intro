@@ -5,8 +5,8 @@ apply plugin: 'war'
 apply plugin: 'liberty'
 // end::liberty[]
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+sourceCompatibility = 11
+targetCompatibility = 11
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
@@ -21,7 +21,7 @@ buildscript {
     }
     dependencies {
         // tag::liberty-dependency[]
-        classpath 'io.openliberty.tools:liberty-gradle-plugin:3.5.1'
+        classpath 'io.openliberty.tools:liberty-gradle-plugin:3.5.2'
         // end::liberty-dependency[]
     }
 }
@@ -39,17 +39,17 @@ repositories {
 dependencies {
     // provided dependencies
     // tag::providedcompile[]
-    providedCompile 'jakarta.platform:jakarta.jakartaee-api:9.1.0'
-    providedCompile 'org.eclipse.microprofile:microprofile:5.0'
+    providedCompile 'jakarta.platform:jakarta.jakartaee-api:10.0.0'
+    providedCompile 'org.eclipse.microprofile:microprofile:6.0'
     // end::providedcompile[]
 
     // test dependencies
     // tag::testimplementation[]
     // tag::junit[]
-    testImplementation 'org.junit.jupiter:junit-jupiter:5.8.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.9.2'
     // end::junit[]
     // tag::commons[]
-    testImplementation 'commons-httpclient:commons-httpclient:3.1'
+    testImplementation 'org.apache.httpcomponents:httpclient:4.5.14'
     // end::commons[]
     // end::testimplementation[]
 }

@@ -315,7 +315,7 @@ response, the test fails. The HTTP client then disconnects from the application.
 
 In the [hotspot=import file=0]`import` statements of this test class, you'll notice that the 
 test has some new dependencies. Earlier you added some [hotspot=testimplementation file=1]`testImplementation` 
-dependencies. The Apache [hotspot=commons file=1]`commons-httpclient` and [hotspot=junit file=1]`org.junit.jupiter` 
+dependencies. The Apache [hotspot=commons file=1]`httpclient` and [hotspot=junit file=1]`org.junit.jupiter` 
 dependencies are needed to compile and run the integration test [hotspot=endpointit file=0]`EndpointIT` 
 class.
 

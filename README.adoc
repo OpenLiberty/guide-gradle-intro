@@ -229,7 +229,7 @@ gradlew.bat tasks
 
 == Running the application
 
-Start Open Liberty in dev mode, which starts the Open Liberty server and listens for file changes:
+Start Open Liberty in https://openliberty.io/docs/latest/development-mode.html[dev mode^], which starts the Open Liberty server and listens for file changes:
 
 [role='command']
 ----

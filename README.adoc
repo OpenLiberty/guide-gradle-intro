@@ -185,7 +185,7 @@ The first section of code defines the [hotspot=war file=1]`war` and [hotspot=lib
 that you want to use. The [hotspot=war file=1]`war` plug-in contains all the tasks to compile 
 Java files, build the WAR file structure, and assemble the archive. The [hotspot=liberty file=1]`liberty` 
 plug-in contains the tasks used to install the Liberty runtime and create and manage 
-Liberty instance. The compatibility and encoding settings are for Java.
+the associated Liberty instances. The compatibility and encoding settings are for Java.
 
 The [hotspot=buildscript file=1]`buildscript` section defines plug-in versions to use in the 
 build and where to find them. This guide uses the [hotspot=liberty-dependency file=1]`liberty` plug-in, 

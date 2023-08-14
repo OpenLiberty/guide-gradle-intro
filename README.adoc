@@ -33,13 +33,13 @@ Learn how to build and test a simple web application using Gradle and Open Liber
 You will learn how to build and test a simple web servlet application using the Gradle `war` 
 plug-in and the Liberty Gradle plug-in. The `war` plug-in compiles and builds the application 
 code. The https://github.com/WASdev/ci.gradle/blob/main/README.md[`liberty` Gradle plug-in^] 
-installs the Open Liberty runtime, creates a server, and installs the application to run and test.
+installs the Open Liberty runtime, creates an instance, and installs the application to run and test.
 The application displays a simple web page with a link. When you click that link, the application 
 calls the servlet to return a simple response of `Hello! Is Gradle working for you?`.
 
 One benefit of using a build tool like Gradle is that you can define the details of the project and any dependencies it has, and Gradle automatically downloads and installs the dependencies.
 Another benefit of using Gradle is that it can run repeatable, automated tests on the application. 
-You can, of course, test your application manually by starting a server and pointing a web browser at the application URL. 
+You can, of course, test your application manually by starting a Liberty instance and pointing a web browser at the application URL. 
 However, automated tests are a much better approach because you can easily rerun the same tests each time the application is built.
 If the tests don't pass after you change the application, the build fails, and you know that you introduced a regression that requires a fix to your code.
 
@@ -64,7 +64,7 @@ in the `start` directory so that you can focus on learning about Gradle. The app
 the standard Gradle directory structure. Using this directory structure saves you from 
 customizing the `build.gradle` file later.
 
-All the application source code, including the Open Liberty instance configuration (`server.xml`), 
+All the application source code, including the Open Liberty `server.xml` configuration file, 
 is in the `start/src` directory:
 
 [source, role="no_copy"]
@@ -185,7 +185,7 @@ The first section of code defines the [hotspot=war file=1]`war` and [hotspot=lib
 that you want to use. The [hotspot=war file=1]`war` plug-in contains all the tasks to compile 
 Java files, build the WAR file structure, and assemble the archive. The [hotspot=liberty file=1]`liberty` 
 plug-in contains the tasks used to install the Liberty runtime and create and manage 
-servers. The compatibility and encoding settings are for Java.
+Liberty instance. The compatibility and encoding settings are for Java.
 
 The [hotspot=buildscript file=1]`buildscript` section defines plug-in versions to use in the 
 build and where to find them. This guide uses the [hotspot=liberty-dependency file=1]`liberty` plug-in, 
@@ -277,8 +277,8 @@ One of the benefits of building an application with a build system like Gradle i
 it can be configured to run a set of automated tests. The [hotspot=war file=1]`war` 
 plug-in extends the https://docs.gradle.org/current/userguide/java_plugin.html[Java plug-in^], 
 which provides test tasks. You can write tests for the individual units of code outside 
-of a running application server (unit tests), or you can write them to call the application 
-that runs on the server (integration tests). In this example, you will create a simple 
+of a running Liberty instance (unit tests), or you can write them to call the application 
+that runs on the Liberty instance (integration tests). In this example, you will create a simple 
 integration test that checks that the web page opens and that the correct response is 
 returned when the link is clicked.
 
@@ -352,7 +352,7 @@ This task displays your application and the test report in the default browser.
 
 The final Gradle magic to add is the task dependency directives.
 The [hotspot=depends file=1]`dependency directives` organizes task execution. 
-In this case, the test task is set to run after the server is started, and the
+In this case, the test task is set to run after the Liberty instance is started, and the
 [hotspot=openbrowser file=1]`openBrowser` task is executed after the test task is finalized.
 
 === Running the tests

@@ -64,7 +64,7 @@ in the `start` directory so that you can focus on learning about Gradle. The app
 the standard Gradle directory structure. Using this directory structure saves you from 
 customizing the `build.gradle` file later.
 
-All the application source code, including the Open Liberty server configuration (`server.xml`), 
+All the application source code, including the Open Liberty instance configuration (`server.xml`), 
 is in the `start/src` directory:
 
 [source, role="no_copy"]
@@ -229,14 +229,14 @@ gradlew.bat tasks
 
 == Running the application
 
-Start Open Liberty in https://openliberty.io/docs/latest/development-mode.html[dev mode^], which starts the Open Liberty server and listens for file changes:
+Start Open Liberty in https://openliberty.io/docs/latest/development-mode.html[dev mode^], which starts the Open Liberty instance and listens for file changes:
 
 [role='command']
 ----
 ./gradlew libertyDev
 ----
 
-After you see the following message, your application server in dev mode is ready.
+After you see the following message, your Liberty instance is ready in dev mode.
 
 [role="no_copy"]
 ----
@@ -371,6 +371,6 @@ include::{common-includes}/devmode-quit.adoc[]
 
 == Great work! You're done!
 
-You built and tested a web application project running on an Open Liberty server using Gradle.
+You built and tested a web application project running on an Open Liberty instance using Gradle.
 
 include::{common-includes}/attribution.adoc[subs="attributes"]

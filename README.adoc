@@ -367,7 +367,7 @@ so that it doesn't match the string that the test is looking for. Then rerun the
 test to automatically restart and retest your application to check to see if the test fails.
 
 [role='command']
-include::{common-includes}/devmode-quit.adoc[]
+include::{common-includes}/devmode-quit-ctrlc.adoc[]
 
 == Great work! You're done!
 

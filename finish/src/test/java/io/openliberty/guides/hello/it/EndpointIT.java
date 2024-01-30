@@ -1,6 +1,6 @@
 // tag::copyright[]
 /*******************************************************************************
- * Copyright (c) 2017, 2023 IBM Corporation and others.
+ * Copyright (c) 2017, 2024 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -18,11 +18,11 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-import org.apache.http.HttpStatus;
-import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.hc.client5.http.classic.methods.HttpGet;
+import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
+import org.apache.hc.client5.http.impl.classic.CloseableHttpResponse;
+import org.apache.hc.client5.http.impl.classic.HttpClients;
+import org.apache.hc.core5.http.HttpStatus;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 // end::import[]
@@ -46,7 +46,7 @@ public class EndpointIT {
     // end::test[]
     public void testServlet() throws Exception {
 
-        CloseableHttpClient client = HttpClientBuilder.create().build();
+        CloseableHttpClient client = HttpClients.createDefault();
         HttpGet httpGet = new HttpGet(webURL);
         CloseableHttpResponse response = null;
 
@@ -54,7 +54,7 @@ public class EndpointIT {
         try {
             response = client.execute(httpGet);
 
-            int statusCode = response.getStatusLine().getStatusCode();
+            int statusCode = response.getCode();
             assertEquals(HttpStatus.SC_OK, statusCode, "HTTP GET failed");
 
             BufferedReader reader = new BufferedReader(new InputStreamReader(
@@ -69,7 +69,6 @@ public class EndpointIT {
                 "Unexpected response body: " + buffer.toString());
         } finally {
             response.close();
-            httpGet.releaseConnection();
         }
         // end::try[]
     }

@@ -6,3 +6,4 @@ build/
 .project
 README.html
 .DS_Store
+bin/

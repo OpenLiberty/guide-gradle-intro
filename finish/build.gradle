@@ -46,7 +46,7 @@ dependencies {
     // test dependencies
     // tag::testimplementation[]
     // tag::junit[]
-    testImplementation 'org.junit.jupiter:junit-jupiter:5.10.1'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.10.2'
     // end::junit[]
     // tag::commons[]
     testImplementation 'org.apache.httpcomponents.client5:httpclient5:5.3.1'

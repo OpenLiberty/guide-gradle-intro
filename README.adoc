@@ -48,9 +48,7 @@ Gradle defines its builds by using https://docs.gradle.org/current/userguide/wri
 Gradle also uses a build cache that rebuilds only the parts of your application that changed, which saves build time in larger projects.
 So Gradle can be a good choice in larger, more complex projects.
 
-Using this guide, you will create a Gradle build definition file (`build.gradle`) for the 
-web application project, and use it to build the application. You will then create a simple, 
-automated test, and configure Gradle to run it after building the application.
+Using this guide, you will create a Gradle build definition file (`build.gradle`) for the web application project, and use it to build the application. You will then create a simple, automated test, and configure Gradle to run it after building the application.
 
 Learn more about Gradle on the https://docs.gradle.org/current/userguide/userguide.html[official Gradle website^].
 

@@ -40,7 +40,7 @@ dependencies {
     // provided dependencies
     // tag::providedcompile[]
     providedCompile 'jakarta.platform:jakarta.jakartaee-api:10.0.0'
-    providedCompile 'org.eclipse.microprofile:microprofile:6.1'
+    providedCompile 'org.eclipse.microprofile:microprofile:7.0'
     // end::providedcompile[]
 
     // test dependencies

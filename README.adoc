@@ -1,4 +1,4 @@
-// Copyright (c) 2017, 2023 IBM Corporation and others.
+// Copyright (c) 2017, 2025 IBM Corporation and others.
 // Licensed under Creative Commons Attribution-NoDerivatives
 // 4.0 International (CC BY-ND 4.0)
 //   https://creativecommons.org/licenses/by-nd/4.0/
@@ -110,17 +110,17 @@ You should see information about the Gradle installation similar to this example
 [source, role="no_copy"]
 ----
 ------------------------------------------------------------
-Gradle 7.6
+Gradle 8.6
 ------------------------------------------------------------
 
-Build time:   2022-11-25 13:35:10 UTC
-Revision:     daece9dbc5b79370cc8e4fd6fe4b2cd400e150a8
+Build time:   2024-02-02 16:47:16 UTC
+Revision:     d55c486870a0dc6f6278f53d21381396d0741c6e
 
-Kotlin:       1.7.10
-Groovy:       3.0.13
-Ant:          Apache Ant(TM) version 1.10.11 compiled on July 10 2021
-JVM:          11.0.12 (Eclipse OpenJ9 openj9-0.27.0)
-OS:           Mac OS X 12.6.3 x86_64
+Kotlin:       1.9.20
+Groovy:       3.0.17
+Ant:          Apache Ant(TM) version 1.10.13 compiled on January 4 2023
+JVM:          17.0.12 (Eclipse OpenJ9 openj9-0.46.0)
+OS:           Mac OS X 15.2 aarch64
 
 ----
 

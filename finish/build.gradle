@@ -46,9 +46,9 @@ dependencies {
     // test dependencies
     // tag::testimplementation[]
     // tag::junit[]
-    testImplementation 'org.junit.platform:junit-platform-engine:1.12.0'
-    testImplementation 'org.junit.platform:junit-platform-launcher:1.12.0'
-    testImplementation 'org.junit.jupiter:junit-jupiter:5.12.0'
+    testImplementation platform('org.junit:junit-bom:5.12.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
     // end::junit[]
     // tag::commons[]
     testImplementation 'org.apache.httpcomponents.client5:httpclient5:5.4.2'

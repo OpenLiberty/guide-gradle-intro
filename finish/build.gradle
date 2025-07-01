@@ -21,7 +21,7 @@ buildscript {
     }
     dependencies {
         // tag::liberty-dependency[]
-        classpath 'io.openliberty.tools:liberty-gradle-plugin:3.9.3'
+        classpath 'io.openliberty.tools:liberty-gradle-plugin:3.9.4'
         // end::liberty-dependency[]
     }
 }

@@ -21,7 +21,7 @@ buildscript {
     }
     dependencies {
         // tag::liberty-dependency[]
-        classpath 'io.openliberty.tools:liberty-gradle-plugin:3.9.3'
+        classpath 'io.openliberty.tools:liberty-gradle-plugin:3.9.4'
         // end::liberty-dependency[]
     }
 }
@@ -46,7 +46,7 @@ dependencies {
     // test dependencies
     // tag::testimplementation[]
     // tag::junit[]
-    testImplementation platform('org.junit:junit-bom:5.13.0')
+    testImplementation platform('org.junit:junit-bom:5.13.2')
     testImplementation 'org.junit.jupiter:junit-jupiter'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
     // end::junit[]

@@ -5,10 +5,8 @@ apply plugin: 'war'
 apply plugin: 'liberty'
 // end::liberty[]
 
-java {
-    sourceCompatibility = JavaVersion.VERSION_11
-    targetCompatibility = JavaVersion.VERSION_11
-}
+sourceCompatibility = 11
+targetCompatibility = 11
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
@@ -23,7 +21,7 @@ buildscript {
     }
     dependencies {
         // tag::liberty-dependency[]
-        classpath 'io.openliberty.tools:liberty-gradle-plugin:4.0.0'
+        classpath 'io.openliberty.tools:liberty-gradle-plugin:3.9.5'
         // end::liberty-dependency[]
     }
 }
@@ -82,7 +80,6 @@ task openBrowser {
 
 // tag::tests[]
 test {
-    failOnNoDiscoveredTests = false
     // tag::junitplatform[]
     useJUnitPlatform()
     // end::junitplatform[]

@@ -5,7 +5,7 @@ set -euxo pipefail
 ./gradlew tasks
 ./gradlew clean
 cat ./build.gradle
-./gradlew build -x openBrowser -i
+./gradlew build -b ./build.gradle -x openBrowser -i
 curl http://localhost:9080/GradleSample/servlet | grep Hello
 ./gradlew libertyStop
 
